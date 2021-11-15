@@ -283,8 +283,17 @@ sanitize() {
 }
 
 parse_args "$@"
-echo "source and push"
-run_build
-main
+
+if [[ -n "$source_only" ]]; then
+  echo "source only"
+  run_build
+elif [[ -n "$push_only" ]]; then
+  echo "push only"
+  main
+else
+  echo "source and push"
+  run_build
+  main
+fi
 
 
