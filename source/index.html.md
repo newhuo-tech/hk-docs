@@ -127,7 +127,7 @@ WebSocket是HTML5一種新的協議（Protocol）。它實現了客戶端與服�
 鑒於延遲高和穩定性差等原因，不建議通過代理的方式訪問火幣香港API。
 </aside>
 <aside class="notice">
-為保證API服務的穩定性，建議使用日本AWS雲服務器進行訪問。
+為保證API服務的穩定性，建議使用香港AWS雲服務器進行訪問。
 </aside> 
 
 ## 簽名認證
@@ -431,7 +431,7 @@ account-id可通過/v1/account/accounts接口獲取，並根據account-type區�
 **API訪問建議**
 
 
-- 建議使用日本AWS雲服務器進行訪問。
+- 建議使用香港AWS雲服務器進行訪問。
 
 
 
@@ -511,7 +511,7 @@ account-id則是該用戶下不同業務賬戶的ID，需要通過`GET /v1/accou
 
 請檢查是否屬於以下情況：
 
-1. 客戶端服務器如在中國大陸境內，連接的穩定性很難保證，建議使用日本AWS雲服務器進行訪問。 
+1. 建議使用香港AWS雲服務器進行訪問。 
 
 
 ### Q4：為什麽WebSocket總是斷開連接？
@@ -1493,10 +1493,10 @@ API Key 權限：交易<br>
 | 參數              | 是否必填 | 數據類型 | 說明                                | 取值範圍                         |
 | ----------------- | -------- | -------- | ----------------------------------- | -------------------------------- |
 | from-user         | true     | long     | 轉出用戶uid                         | 母用戶uid,子用戶uid              |
-| from-account-type | true     | string   | 轉出賬戶類型                        | spot,margin                      |
+| from-account-type | true     | string   | 轉出賬戶類型                        | spot                      |
 | from-account      | true     | long     | 轉出賬戶id                          |                                  |
 | to-user           | true     | long     | 轉入用戶uid                         | 母用戶uid,子用戶uid              |
-| to-account-type   | true     | string   | 轉入賬戶類型                        | spot,margin                      |
+| to-account-type   | true     | string   | 轉入賬戶類型                        | spot                      |
 | to-account        | true     | long     | 轉入賬戶id                          |                                  |
 | currency          | true     | string   | 幣種，即btc, ltc, bch, eth, etc ... | 取值參考GET /v1/common/currencys |
 | amount            | true     | string   | 劃轉金額                            |                                  |
@@ -1923,53 +1923,6 @@ API Key 權限：讀取
 | { uid       | TRUE     | long     | 子用戶UID        |              |
 | userState } | TRUE     | string   | 子用戶狀態       | lock, normal |
 
-##設置子用戶交易權限
-
-API Key 權限：交易
-
-此接口用於母用戶批量設置子用戶的交易權限。
-子用戶的現貨交易權限默認開通無須設置。
-
-###HTTP 請求
-
-- POST `/v2/sub-user/tradable-market`
-
-### 請求參數
-
-| 參數        | 是否必填 | 數據類型 | 長度 | 說明                                          | 取值範圍                     |
-| ----------- | -------- | -------- | ---- | --------------------------------------------- | ---------------------------- |
-| subUids     | true     | string   | -    | 子用戶UID列表（支持多填，最多50個，逗號分隔） | -                            |
-| accountType | true     | string   | -    | 賬戶類型                                      | isolated-margin,cross-margin |
-| activation  | true     | string   | -    | 賬戶激活狀態                                  | activated,deactivated        |
-
-> Response:
-
-```json
-{
-    "code": 200,
-    "data": [
-        {
-            "subUid": "132208121",
-            "accountType": "isolated-margin",
-            "activation": "activated"
-        }
-    ]
-}
-```
-
-### 響應數據
-
-| 參數        | 是否必填 | 數據類型 | 長度 | 說明                                                       | 取值範圍                     |
-| ----------- | -------- | -------- | ---- | ---------------------------------------------------------- | ---------------------------- |
-| code        | true     | int      | -    | 狀態碼                                                     |                              |
-| message     | false    | string   | -    | 錯誤描述（如有）                                           |                              |
-| data        | true     | object   |      |                                                            |                              |
-| {subUid     | true     | string   | -    | 子用戶UID                                                  | -                            |
-| accountType | true     | string   | -    | 賬戶類型                                                   | isolated-margin,cross-margin |
-| activation  | true     | string   | -    | 賬戶激活狀態                                               | activated,deactivated        |
-| errCode     | false    | int      | -    | 請求被拒錯誤碼（僅在設置該subUid市場準入權限錯誤時返回）   |                              |
-| errMessage} | false    | string   | -    | 請求被拒錯誤消息（僅在設置該subUid市場準入權限錯誤時返回） |                              |
-
 
 
 ## 獲取特定子用戶的賬戶列表
@@ -1998,14 +1951,6 @@ API Key 權限：讀取
         "deductMode": "sub",
         "list": [
             {
-                "accountType": "isolated-margin",
-                "activation": "activated"
-            },
-            {
-                "accountType": "cross-margin",
-                "activation": "deactivated"
-            },
-            {
                 "accountType": "spot",
                 "activation": "activated",
                 "transferrable": true,
@@ -2031,13 +1976,67 @@ API Key 權限：讀取
 | { uid             | TRUE     | long     | 子用戶UID                                         |                                                   |
 | deductMode        | TRUE     |          |                                                   |                                                   |
 | list              | TRUE     | object   |                                                   |                                                   |
-| { accountType     | TRUE     | string   | 賬戶類型                                          | spot, isolated-margin, cross-margin, futures,swap |
+| { accountType     | TRUE     | string   | 賬戶類型                                          | spot |
 | activation        | TRUE     | string   | 賬戶激活狀態                                      | activated, deactivated                            |
 | transferrable     | FALSE    | bool     | 可劃轉權限（僅對accountType=spot有效）            | true, false                                       |
 | accountIds        | FALSE    | object   |                                                   |                                                   |
 | { accountId       | TRUE     | string   | 賬戶ID                                            |                                                   |
-| subType           | FALSE    | string   | 賬戶子類型（僅對accountType=isolated-margin有效） |                                                   |
+| subType           | FALSE    | string   | 賬戶子類型 |                                                   |
 | accountStatus }}} | TRUE     | string   | 賬戶狀態                                          | normal, locked                                    |
+
+
+
+
+
+
+## 子用戶余額（匯總）
+
+API Key 權限：讀取<br>
+限頻值（NEW）：2次/2s
+
+母用戶查詢其下所有子用戶的各幣種匯總余額
+
+### HTTP請求
+
+- GET `/v1/subuser/aggregate-balance`
+
+
+### 請求參數
+
+無
+
+> Response:
+
+```json
+  "data": [
+      {
+        "currency": "eos",
+        "type": "spot",
+        "balance": "1954559.809500000000000000"
+      },
+      {
+        "currency": "btc",
+        "type": "spot",
+        "balance": "0.000000000000000000"
+      },
+      {
+        "currency": "usdt",
+        "type": "spot",
+        "balance": "2925209.411300000000000000"
+      }
+   ]
+```
+
+### 響應數據
+
+
+| 參數 | 是否必填 | 數據類型 |  說明       | 取值範圍                                                     |
+| ---- | -------- | -------- | ---------- | ------------------------------------------------------------ |
+| status   | true        | string     | 狀態 | "OK" or "Error"                                                         |
+|data| true        | list   | |      |
+| currency | true        | string   | 幣種        |  |
+| type | true        | string   | 賬戶類型        |  spot：交易賬戶|
+| balance | true        | string   | 交易賬戶余額（可用余額和凍結余額的總和）      |  |
 
 
 
@@ -2097,7 +2096,7 @@ API Key 權限：讀取<br>
 | 參數 | 是否必填 | 數據類型 | 長度 | 說明       | 取值範圍                                                     |      |
 | ---- | -------- | -------- | ---- | ---------- | ------------------------------------------------------------ | ---- |
 | id   | -        | long     | -    | 子用戶 UID | -                                                            |      |
-| type | -        | string   | -    | 賬戶類型   | spot：交易賬戶，point：點卡賬戶, margin:逐倉杠桿賬戶，super-margin：全倉杠桿賬戶 |      |
+| type | -        | string   | -    | 賬戶類型   | spot：交易賬戶|      |
 | list | -        | object   | -    | -          | -                                                            |      |
 
 - list
@@ -2105,7 +2104,7 @@ API Key 權限：讀取<br>
 | 參數     | 是否必填 | 數據類型 | 長度 | 說明     | 取值範圍                          |      |
 | -------- | -------- | -------- | ---- | -------- | --------------------------------- | ---- |
 | currency | -        | string   | -    | 幣種     | -                                 |      |
-| type     | -        | string   | -    | 賬戶類型 | trade：交易賬戶，frozen：凍結賬戶 |      |
+| type     | -        | string   | -    | 賬戶類型 | trade：可用，frozen：凍結 |      |
 | balance  | -        | decimal  | -    | 賬戶余額 | -                                 |      |
 
 ## 常見錯誤碼
