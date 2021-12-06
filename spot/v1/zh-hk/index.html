@@ -446,10 +446,10 @@
                     <a href="#7ab4e3eccb" class="toc-h2 toc-link" data-title="獲取特定子用戶的用戶狀態">獲取特定子用戶的用戶狀態</a>
                   </li>
                   <li>
-                    <a href="#aafacbcf15" class="toc-h2 toc-link" data-title="設置子用戶交易權限">設置子用戶交易權限</a>
+                    <a href="#ee162e8dc7" class="toc-h2 toc-link" data-title="獲取特定子用戶的賬戶列表">獲取特定子用戶的賬戶列表</a>
                   </li>
                   <li>
-                    <a href="#ee162e8dc7" class="toc-h2 toc-link" data-title="獲取特定子用戶的賬戶列表">獲取特定子用戶的賬戶列表</a>
+                    <a href="#bfa339f64c" class="toc-h2 toc-link" data-title="子用戶余額（匯總）">子用戶余額（匯總）</a>
                   </li>
                   <li>
                     <a href="#a5930975f8" class="toc-h2 toc-link" data-title="子用戶交易賬戶余額">子用戶交易賬戶余額</a>
@@ -698,7 +698,7 @@
 鑒於延遲高和穩定性差等原因，不建議通過代理的方式訪問火幣香港API。
 </aside>
 <aside class="notice">
-為保證API服務的穩定性，建議使用日本AWS雲服務器進行訪問。
+為保證API服務的穩定性，建議使用香港AWS雲服務器進行訪問。
 </aside> </p>
 <h2 id='2d855262bd'>簽名認證</h2><h3 id='1e987d3751'>簽名說明</h3>
 <p>API 請求在通過 internet 傳輸的過程中極有可能被篡改，為了確保請求未被更改，除公共接口（基礎信息，行情數據）外的私有接口均必須使用您的 API Key 做簽名認證，以校驗參數或參數值在傳輸途中是否發生了更改。<br>
@@ -1090,7 +1090,7 @@ api.huobi.com.hk\n
 <p><strong>API訪問建議</strong></p>
 
 <ul>
-<li>建議使用日本AWS雲服務器進行訪問。</li>
+<li>建議使用香港AWS雲服務器進行訪問。</li>
 </ul>
 <h3 id='480588aa7d'>行情類</h3>
 <p><strong>行情類數據的獲取</strong></p>
@@ -1175,7 +1175,7 @@ api.huobi.com.hk\n
 <p>請檢查是否屬於以下情況：</p>
 
 <ol>
-<li>客戶端服務器如在中國大陸境內，連接的穩定性很難保證，建議使用日本AWS雲服務器進行訪問。 </li>
+<li>建議使用香港AWS雲服務器進行訪問。 </li>
 </ol>
 <h3 id='q4-websocket'>Q4：為什麽WebSocket總是斷開連接？</h3>
 <p>常見原因有：</p>
@@ -2903,7 +2903,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>true</td>
 <td>string</td>
 <td>轉出賬戶類型</td>
-<td>spot,margin</td>
+<td>spot</td>
 </tr>
 <tr>
 <td>from-account</td>
@@ -2924,7 +2924,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>true</td>
 <td>string</td>
 <td>轉入賬戶類型</td>
-<td>spot,margin</td>
+<td>spot</td>
 </tr>
 <tr>
 <td>to-account</td>
@@ -3917,150 +3917,15 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>lock, normal</td>
 </tr>
 </tbody></table>
-<h2 id='aafacbcf15'>設置子用戶交易權限</h2>
-<p>API Key 權限：交易</p>
-
-<p>此接口用於母用戶批量設置子用戶的交易權限。
-子用戶的現貨交易權限默認開通無須設置。</p>
-<h3 id='http-22'>HTTP 請求</h3>
-<ul>
-<li>POST <code>/v2/sub-user/tradable-market</code></li>
-</ul>
-<h3 id='ba05bab92e-22'>請求參數</h3>
-<table><thead>
-<tr>
-<th>參數</th>
-<th>是否必填</th>
-<th>數據類型</th>
-<th>長度</th>
-<th>說明</th>
-<th>取值範圍</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>subUids</td>
-<td>true</td>
-<td>string</td>
-<td>-</td>
-<td>子用戶UID列表（支持多填，最多50個，逗號分隔）</td>
-<td>-</td>
-</tr>
-<tr>
-<td>accountType</td>
-<td>true</td>
-<td>string</td>
-<td>-</td>
-<td>賬戶類型</td>
-<td>isolated-margin,cross-margin</td>
-</tr>
-<tr>
-<td>activation</td>
-<td>true</td>
-<td>string</td>
-<td>-</td>
-<td>賬戶激活狀態</td>
-<td>activated,deactivated</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"132208121"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"isolated-margin"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"activation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"activated"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='8cee0e29db-18'>響應數據</h3>
-<table><thead>
-<tr>
-<th>參數</th>
-<th>是否必填</th>
-<th>數據類型</th>
-<th>長度</th>
-<th>說明</th>
-<th>取值範圍</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>true</td>
-<td>int</td>
-<td>-</td>
-<td>狀態碼</td>
-<td></td>
-</tr>
-<tr>
-<td>message</td>
-<td>false</td>
-<td>string</td>
-<td>-</td>
-<td>錯誤描述（如有）</td>
-<td></td>
-</tr>
-<tr>
-<td>data</td>
-<td>true</td>
-<td>object</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>{subUid</td>
-<td>true</td>
-<td>string</td>
-<td>-</td>
-<td>子用戶UID</td>
-<td>-</td>
-</tr>
-<tr>
-<td>accountType</td>
-<td>true</td>
-<td>string</td>
-<td>-</td>
-<td>賬戶類型</td>
-<td>isolated-margin,cross-margin</td>
-</tr>
-<tr>
-<td>activation</td>
-<td>true</td>
-<td>string</td>
-<td>-</td>
-<td>賬戶激活狀態</td>
-<td>activated,deactivated</td>
-</tr>
-<tr>
-<td>errCode</td>
-<td>false</td>
-<td>int</td>
-<td>-</td>
-<td>請求被拒錯誤碼（僅在設置該subUid市場準入權限錯誤時返回）</td>
-<td></td>
-</tr>
-<tr>
-<td>errMessage}</td>
-<td>false</td>
-<td>string</td>
-<td>-</td>
-<td>請求被拒錯誤消息（僅在設置該subUid市場準入權限錯誤時返回）</td>
-<td></td>
-</tr>
-</tbody></table>
 <h2 id='ee162e8dc7'>獲取特定子用戶的賬戶列表</h2>
 <p>母用戶通過此接口可獲取特定子用戶的Account ID列表及各賬戶狀態</p>
 
 <p>API Key 權限：讀取</p>
-<h3 id='http-23'>HTTP 請求</h3>
+<h3 id='http-22'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/v2/sub-user/account-list</code></li>
 </ul>
-<h3 id='ba05bab92e-23'>請求參數</h3>
+<h3 id='ba05bab92e-22'>請求參數</h3>
 <table><thead>
 <tr>
 <th>參數名稱</th>
@@ -4091,14 +3956,6 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
         </span><span class="s2">"deductMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"isolated-margin"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"activation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"activated"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross-margin"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"activation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deactivated"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"activation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"activated"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"transferrable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -4112,7 +3969,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='8cee0e29db-19'>響應數據</h3>
+</span></code></pre><h3 id='8cee0e29db-18'>響應數據</h3>
 <table><thead>
 <tr>
 <th>參數名稱</th>
@@ -4169,7 +4026,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>TRUE</td>
 <td>string</td>
 <td>賬戶類型</td>
-<td>spot, isolated-margin, cross-margin, futures,swap</td>
+<td>spot</td>
 </tr>
 <tr>
 <td>activation</td>
@@ -4203,7 +4060,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>subType</td>
 <td>FALSE</td>
 <td>string</td>
-<td>賬戶子類型（僅對accountType=isolated-margin有效）</td>
+<td>賬戶子類型</td>
 <td></td>
 </tr>
 <tr>
@@ -4212,6 +4069,84 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>string</td>
 <td>賬戶狀態</td>
 <td>normal, locked</td>
+</tr>
+</tbody></table>
+<h2 id='bfa339f64c'>子用戶余額（匯總）</h2>
+<p>API Key 權限：讀取<br>
+限頻值（NEW）：2次/2s</p>
+
+<p>母用戶查詢其下所有子用戶的各幣種匯總余額</p>
+<h3 id='http-23'>HTTP請求</h3>
+<ul>
+<li>GET <code>/v1/subuser/aggregate-balance</code></li>
+</ul>
+<h3 id='ba05bab92e-23'>請求參數</h3>
+<p>無</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eos"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1954559.809500000000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2925209.411300000000000000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='8cee0e29db-19'>響應數據</h3>
+<table><thead>
+<tr>
+<th>參數</th>
+<th>是否必填</th>
+<th>數據類型</th>
+<th>說明</th>
+<th>取值範圍</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>true</td>
+<td>string</td>
+<td>狀態</td>
+<td>&quot;OK&quot; or &quot;Error&quot;</td>
+</tr>
+<tr>
+<td>data</td>
+<td>true</td>
+<td>list</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>currency</td>
+<td>true</td>
+<td>string</td>
+<td>幣種</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>string</td>
+<td>賬戶類型</td>
+<td>spot：交易賬戶</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>true</td>
+<td>string</td>
+<td>交易賬戶余額（可用余額和凍結余額的總和）</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='a5930975f8'>子用戶交易賬戶余額</h2>
@@ -4303,7 +4238,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>string</td>
 <td>-</td>
 <td>賬戶類型</td>
-<td>spot：交易賬戶，point：點卡賬戶, margin:逐倉杠桿賬戶，super-margin：全倉杠桿賬戶</td>
+<td>spot：交易賬戶</td>
 <td></td>
 </tr>
 <tr>
@@ -4347,7 +4282,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>string</td>
 <td>-</td>
 <td>賬戶類型</td>
-<td>trade：交易賬戶，frozen：凍結賬戶</td>
+<td>trade：可用，frozen：凍結</td>
 <td></td>
 </tr>
 <tr>
