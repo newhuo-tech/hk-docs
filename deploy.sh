@@ -27,8 +27,8 @@ run_build() {
     build_dir=$build_directory/coin_margined_swap/v1/$language
   elif [[ $version = usdt ]]; then
     build_dir=$build_directory/usdt_swap/v1/$language
-#  elif [[ $version = option ]]; then
-#    build_dir=$build_directory/option/v1/$language
+  elif [[ $version = option ]]; then
+    build_dir=$build_directory/option/v1/$language
   else
     version="v"${version}
     build_dir=$build_directory/spot/$version/$language
@@ -228,7 +228,7 @@ commit+push() {
   if [ $GH_TOKEN ]; then
     # deploy by Travis CI
     # add github token
-    repo="https://"$GH_TOKEN"@github.com/huobi-hk/docs.git"
+    repo="https://"$GH_TOKEN"@github.com/HuobiHk/docs.git"
     git remote add origin-pages $repo
     git push --quiet origin-pages $deploy_branch
   else
