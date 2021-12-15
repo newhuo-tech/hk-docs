@@ -208,9 +208,20 @@
       </span>
     </a>
     <header>
-        <div class="flex_box">
-            <img src="images/logo.svg" class="logo" alt="Logo" />
+      <div class="flex_box">
+        <img src="images/logo.svg" class="logo" alt="Logo" />
+        <div class="nav_box">
+          <span class="nav_cell" style="display: none">
+            <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
+            <ul class="nav_ul">
+              <li>
+                <a href="/docs/spot/v1/en/" id="v1_url">v1</a>
+              </li>
+            </ul>
+          </span>
+
         </div>
+      </div>
     </header>
     <div class="toc-wrapper">
       <ul id="toc" class="toc-list-h1">
@@ -9821,24 +9832,31 @@ The topic disseminates the current static value of individual accounts first, at
       const btn_dm = document.getElementById('btn_dm');
       const btn_coin_margined_swap = document.getElementById('btn_coin_margined_swap');
       const btn_usdt_swap = document.getElementById('btn_usdt_swap')
+    //  const btn_option = document.getElementById('btn_option');
       const v1_url = document.getElementById('v1_url');
       const url = GetUrlRelativePath();
 
-        //如果是英文环境
-        lang_btn.innerHTML = 'Traditional Chinese';
+      if(url.indexOf('zh-hk') != -1){
+        lang_btn.innerHTML = 'English';
+        lang_btn.href = url.replace('zh-hk/', 'en/');
+        btn_spot.href = btn_spot.href.replace('en/', 'zh-hk/');
+        btn_dm.href = btn_dm.href.replace('en/', 'zh-hk/');
+        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('en/', 'zh-hk/');
+        btn_usdt_swap.href = btn_usdt_swap.href.replace('en/', 'zh-hk/');
+        v1_url.href = '/docs/spot/v1/zh-hk/';
+      }else{
+        lang_btn.innerHTML = '繁體中文';
         btn_spot.innerHTML = 'Spot';
         btn_dm.innerHTML = 'Futures';
-        // btn_swap.innerHTML = 'SWAP API';
         btn_coin_margined_swap.innerHTML = 'Coin Margined Swap';
         btn_usdt_swap.innerHTML = 'USDT Margined Swap';
-      //  btn_option.innerHTML = 'Option';
         lang_btn.href = url.replace('en/', 'zh-hk/');
         btn_spot.href = btn_spot.href.replace('zh-hk/', 'en/');
-        btn_dm.href = btn_dm.href.replace('cn/', 'en/');
-        // btn_swap.href = btn_swap.href.replace('cn/', 'en/');
+        btn_dm.href = btn_dm.href.replace('zh-hk/', 'en/');
         btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('zh-hk/', 'en/');
         btn_usdt_swap.href = btn_usdt_swap.href.replace('zh-hk/', 'en/');
         v1_url.href = '/docs/spot/v1/en/';
+      }
 
       if(location.href.indexOf('docs/dm/v') > 0){
         btn_spot.className = '';
