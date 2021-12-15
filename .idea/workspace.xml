@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ac0d56db-ca36-4bb5-a398-e68ab530c9a4" name="Default Changelist" comment="doc:更新图片">
+      <change beforePath="$PROJECT_DIR$/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/fonts/slate.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/fonts/slate.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/fonts/slate.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/fonts/slate.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/fonts/slate.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/images/icon_nav.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/images/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/images/logo_bak.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/images/navbar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/javascripts/all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/javascripts/all_nosearch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/stylesheets/print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/cn/stylesheets/screen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/en/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/spot/v1/en/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spot/v1/zh-hk/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/spot/v1/zh-hk/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="20oGlZsqHavw9koi4BpGWbQd8tF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/spot/v1/en" />
+      <recent name="$PROJECT_DIR$/source" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ac0d56db-ca36-4bb5-a398-e68ab530c9a4" name="Default Changelist" comment="" />
+      <created>1636703678083</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636703678083</updated>
+      <workItem from="1636703679755" duration="3059000" />
+      <workItem from="1636941334251" duration="5823000" />
+      <workItem from="1636966979377" duration="598000" />
+      <workItem from="1638436610215" duration="599000" />
+      <workItem from="1638757773968" duration="4169000" />
+      <workItem from="1639043768570" duration="844000" />
+      <workItem from="1639103210290" duration="598000" />
+      <workItem from="1639541214617" duration="2299000" />
+    </task>
+    <task id="LOCAL-00001" summary="doc:增加香港站api wiki">
+      <created>1636704537786</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1636704537786</updated>
+    </task>
+    <task id="LOCAL-00002" summary="doc:增加香港站api cn wiki">
+      <created>1636705863374</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636705863374</updated>
+    </task>
+    <task id="LOCAL-00003" summary="doc:增加香港站api hk wiki">
+      <created>1636705957716</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636705957716</updated>
+    </task>
+    <task id="LOCAL-00004" summary="build:修改git仓库地址">
+      <created>1636944096991</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636944096991</updated>
+    </task>
+    <task id="LOCAL-00005" summary="build:修改git仓库地址">
+      <created>1636944300133</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636944300133</updated>
+    </task>
+    <task id="LOCAL-00006" summary="build:修改构建脚本">
+      <created>1636945529627</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1636945529627</updated>
+    </task>
+    <task id="LOCAL-00007" summary="build:修改构建脚本">
+      <created>1636946181083</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636946181083</updated>
+    </task>
+    <task id="LOCAL-00008" summary="build:修改构建脚本">
+      <created>1636946492122</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1636946492122</updated>
+    </task>
+    <task id="LOCAL-00009" summary="doc:首页文档">
+      <created>1636947685070</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1636947685070</updated>
+    </task>
+    <task id="LOCAL-00010" summary="doc:更新en文档">
+      <created>1638773568808</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1638773568808</updated>
+    </task>
+    <task id="LOCAL-00011" summary="doc:更新cn文档">
+      <created>1638773687392</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1638773687392</updated>
+    </task>
+    <task id="LOCAL-00012" summary="doc:更新hk文档">
+      <created>1638773751646</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1638773751646</updated>
+    </task>
+    <task id="LOCAL-00013" summary="doc:更新en git地址">
+      <created>1638775064365</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1638775064365</updated>
+    </task>
+    <task id="LOCAL-00014" summary="doc:更新zh-hk跳转地址">
+      <created>1638776884075</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1638776884075</updated>
+    </task>
+    <task id="LOCAL-00015" summary="doc:更新图片">
+      <created>1639043909495</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1639043909495</updated>
+    </task>
+    <task id="LOCAL-00016" summary="doc:更新图片">
+      <created>1639044003221</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1639044003221</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="doc:增加香港站api wiki" />
+    <MESSAGE value="doc:增加香港站api cn wiki" />
+    <MESSAGE value="doc:增加香港站api hk wiki" />
+    <MESSAGE value="build:修改git仓库地址" />
+    <MESSAGE value="build:修改构建脚本" />
+    <MESSAGE value="doc:首页文档" />
+    <MESSAGE value="doc:更新en文档" />
+    <MESSAGE value="doc:更新cn文档" />
+    <MESSAGE value="doc:更新hk文档" />
+    <MESSAGE value="doc:更新en git地址" />
+    <MESSAGE value="doc:更新zh-hk跳转地址" />
+    <MESSAGE value="doc:更新图片" />
+    <option name="LAST_COMMIT_MESSAGE" value="doc:更新图片" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="360" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1638776371538">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="360" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1638776371538" />
+    <state x="640" y="557" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1639544471977">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="640" y="557" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1792.1095@0.25.1792.1095" timestamp="1639544471977" />
+    <state x="100" y="158" width="1592" height="770" key="DiffContextDialog" timestamp="1638779920794">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="100" y="158" width="1592" height="770" key="DiffContextDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1638779920794" />
+    <state x="744" y="469" key="Github.Dialog.Accounts.Choose" timestamp="1638773588587">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="744" y="469" key="Github.Dialog.Accounts.Choose/0.25.1792.1095@0.25.1792.1095" timestamp="1638773588587" />
+    <state x="473" y="179" key="SettingsEditor" timestamp="1636944944396">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="473" y="179" key="SettingsEditor/0.25.1792.1095@0.25.1792.1095" timestamp="1636944944396" />
+    <state x="496" y="280" key="Vcs.Push.Dialog.v2" timestamp="1639044013103">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="496" y="280" key="Vcs.Push.Dialog.v2/0.25.1792.1095@0.25.1792.1095" timestamp="1639044013103" />
+    <state x="764" y="281" key="VcsDiffUtil.ChangesDialog" timestamp="1636944119262">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="764" y="281" key="VcsDiffUtil.ChangesDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1636944119262" />
+    <state x="614" y="508" width="599" height="486" key="find.popup" timestamp="1639544898553">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="614" y="508" width="599" height="486" key="find.popup/0.25.1792.1095@0.25.1792.1095" timestamp="1639544898553" />
+    <state x="612" y="335" key="git4idea.merge.GitPullDialog" timestamp="1639550240462">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="612" y="335" key="git4idea.merge.GitPullDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1639550240462" />
+  </component>
+</project>

@@ -210,37 +210,7 @@
     <header>
       <div class="flex_box">
         <img src="images/logo.svg" class="logo" alt="Logo" />
-        <div class="nav_box">
-          <span class="nav_cell" style="display: none">
-            <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
-            <ul class="nav_ul">
-              <li>
-                <a href="/docs/spot/v1/en/" id="v1_url">v1</a>
-              </li>
-            </ul>
-          </span>
-          <span class="nav_cell nav_tab">
-            <a href="/docs/spot/v1/cn/" id="btn_spot">现货</a>
-          </span>
-          <span class="nav_cell nav_tab" style="display: none">
-            <a href="/docs/dm/v1/en/" id="btn_dm">交割合约</a>
-          </span>
-          <span class="nav_cell nav_tab" style="display: none">
-            <a href="/docs/coin_margined_swap/v1/en/" id="btn_coin_margined_swap">币本位永续合约</a>
-          </span>
-          <span class="nav_cell nav_tab" style="display: none">
-            <a href="/docs/usdt_swap/v1/en/" id="btn_usdt_swap">USDT本位永续合约</a>
-          </span>
-          <!--
-          <span class="nav_cell nav_tab">
-            <a href="/docs/option/v1/en/" id="btn_option">期权合约</a>
-          </span>
-           <span class="nav_cell nav_tab">
-            <a href="/docs/swap/v1/en/" id="btn_swap">永续合约</a>
-          </span> -->
-        </div>
       </div>
-      <a href="/docs/spot/v1/cn/" class="lang" id="lang_box">简体中文</a>
     </header>
     <div class="toc-wrapper">
         <div class="lang-selector">
@@ -10430,15 +10400,8 @@ accessKey=0664b695-rfhfg2mkl3-abbf6c5d-49810&amp;signatureMethod=HmacSHA256&amp;
     //  const btn_option = document.getElementById('btn_option');
       const v1_url = document.getElementById('v1_url');
       const url = GetUrlRelativePath();
-
-      if(url.indexOf('zh-hk') != -1){
-        //如果是中文环境
         lang_btn.innerHTML = 'English';
-        btn_spot.innerHTML = '现货';
-        btn_dm.innerHTML = '交割合约';
-        btn_coin_margined_swap.innerHTML = '币本位永续合约';
-        btn_usdt_swap.innerHTML = 'USDT本位永续合约';
-      //  btn_option.innerHTML = '期权合约';
+        btn_spot.innerHTML = '現貨';
         lang_btn.href = url.replace('zh-hk/', 'en/');
         btn_spot.href = btn_spot.href.replace('en/', 'zh-hk/');
         btn_dm.href = btn_dm.href.replace('en/', 'zh-hk/');
@@ -10446,7 +10409,6 @@ accessKey=0664b695-rfhfg2mkl3-abbf6c5d-49810&amp;signatureMethod=HmacSHA256&amp;
         btn_usdt_swap.href = btn_usdt_swap.href.replace('en/', 'zh-hk/');
       //  btn_option.href = btn_option.href.replace('en/', 'cn/');
         v1_url.href = '/docs/spot/v1/zh-hk/';
-      }
 
       if(location.href.indexOf('docs/dm/v') > 0){
         btn_spot.className = '';
