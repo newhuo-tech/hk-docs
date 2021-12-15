@@ -64,7 +64,7 @@ under the License.
 
         </div>
       </div>
-      <a href="/docs/spot/v1/cn/" class="lang" id="lang_box">繁體中文</a>
+      <a href="/docs/spot/v1/zh-hk/" class="lang" id="lang_box">繁體中文</a>
     </header>
     <div class="toc-wrapper">
       <% if language_tabs.any? %>
@@ -137,7 +137,7 @@ under the License.
       const v1_url = document.getElementById('v1_url');
       const url = GetUrlRelativePath();
 
-      if(url.indexOf('cn') != -1){
+      if(url.indexOf('zh-hk') != -1){
         lang_btn.innerHTML = 'English';
         btn_spot.innerHTML = '现货';
         lang_btn.href = url.replace('zh-hk/', 'en/');
