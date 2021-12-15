@@ -57,32 +57,14 @@ under the License.
             <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
             <ul class="nav_ul">
               <li>
-                <a href="/docs/spot/v1/en/" id="v1_url">v1</a>
+                <a href="/docs/spot/v1/zh-hk/" id="v1_url">v1</a>
               </li>
             </ul>
           </span>
-          <span class="nav_cell nav_tab">
-            <a href="/docs/spot/v1/cn/" id="btn_spot">现货</a>
-          </span>
-          <span class="nav_cell nav_tab" style="display: none">
-            <a href="/docs/dm/v1/en/" id="btn_dm">交割合约</a>
-          </span>
-          <span class="nav_cell nav_tab" style="display: none">
-            <a href="/docs/coin_margined_swap/v1/en/" id="btn_coin_margined_swap">币本位永续合约</a>
-          </span>
-          <span class="nav_cell nav_tab" style="display: none">
-            <a href="/docs/usdt_swap/v1/en/" id="btn_usdt_swap">USDT本位永续合约</a>
-          </span>
-          <!--
-          <span class="nav_cell nav_tab">
-            <a href="/docs/option/v1/en/" id="btn_option">期权合约</a>
-          </span>
-           <span class="nav_cell nav_tab">
-            <a href="/docs/swap/v1/en/" id="btn_swap">永续合约</a>
-          </span> -->
+
         </div>
       </div>
-      <a href="/docs/spot/v1/cn/" class="lang" id="lang_box">简体中文</a>
+      <a href="/docs/spot/v1/cn/" class="lang" id="lang_box">繁體中文</a>
     </header>
     <div class="toc-wrapper">
       <% if language_tabs.any? %>
@@ -156,36 +138,25 @@ under the License.
       const url = GetUrlRelativePath();
 
       if(url.indexOf('cn') != -1){
-        //如果是中文环境
         lang_btn.innerHTML = 'English';
         btn_spot.innerHTML = '现货';
-        btn_dm.innerHTML = '交割合约';
-        btn_coin_margined_swap.innerHTML = '币本位永续合约';
-        btn_usdt_swap.innerHTML = 'USDT本位永续合约';
-      //  btn_option.innerHTML = '期权合约';
-        lang_btn.href = url.replace('cn/', 'en/');
-        btn_spot.href = btn_spot.href.replace('en/', 'cn/');
-        btn_dm.href = btn_dm.href.replace('en/', 'cn/');
-        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('en/', 'cn/');
-        btn_usdt_swap.href = btn_usdt_swap.href.replace('en/', 'cn/');
-      //  btn_option.href = btn_option.href.replace('en/', 'cn/');
-        v1_url.href = '/docs/spot/v1/cn/';
+        lang_btn.href = url.replace('zh-hk/', 'en/');
+        btn_spot.href = btn_spot.href.replace('en/', 'zh-hk/');
+        btn_dm.href = btn_dm.href.replace('en/', 'zh-hk/');
+        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('en/', 'zh-hk/');
+        btn_usdt_swap.href = btn_usdt_swap.href.replace('en/', 'zh-hk/');
+        v1_url.href = '/docs/spot/v1/zh-hk/';
       }else{
-        //如果是英文环境
-        lang_btn.innerHTML = '中文';
+        lang_btn.innerHTML = '繁體中文';
         btn_spot.innerHTML = 'Spot';
         btn_dm.innerHTML = 'Futures';
-        // btn_swap.innerHTML = 'SWAP API';
         btn_coin_margined_swap.innerHTML = 'Coin Margined Swap';
         btn_usdt_swap.innerHTML = 'USDT Margined Swap';
-      //  btn_option.innerHTML = 'Option';
-        lang_btn.href = url.replace('en/', 'cn/');
-        btn_spot.href = btn_spot.href.replace('cn/', 'en/');
-        btn_dm.href = btn_dm.href.replace('cn/', 'en/');
-        // btn_swap.href = btn_swap.href.replace('cn/', 'en/');
-        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('cn/', 'en/');
-        btn_usdt_swap.href = btn_usdt_swap.href.replace('cn/', 'en/');
-      //  btn_option.href = btn_option.href.replace('cn/', 'en/');
+        lang_btn.href = url.replace('en/', 'zh-hk/');
+        btn_spot.href = btn_spot.href.replace('zh-hk/', 'en/');
+        btn_dm.href = btn_dm.href.replace('zh-hk/', 'en/');
+        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('zh-hk/', 'en/');
+        btn_usdt_swap.href = btn_usdt_swap.href.replace('zh-hk/', 'en/');
         v1_url.href = '/docs/spot/v1/en/';
       }
 
