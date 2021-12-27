@@ -2694,7 +2694,7 @@ This endpoint returns the match result of an order.
       "filled-amount": "9.1155000000",
       "filled-fees": "0.0182310000",
       "created-at": 1494901400435,
-      "role": maker,
+      "role": "maker",
       "filled-points": "0.0",
       "fee-deduct-currency": "",
       "fee-deduct-state": "done"
