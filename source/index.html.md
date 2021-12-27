@@ -2915,11 +2915,10 @@ API Key 權限：讀取<br>
       "created-at": 1494901400435,
       "role": "maker",
       "filled-points": "0.0",
-      「fee-deduct-state」:"done",
+      "fee-deduct-state":"done",
       "fee-deduct-currency": ""
-    }
-    ...
-  ]
+      }
+      ]
 }
 ```
 
@@ -3102,12 +3101,11 @@ API Key 權限：讀取<br>
       "filled-fees": "0.0182310000",
       "created-at": 1494901400435,
       "trade-id": 100282808529,
-      "role": taker,
+      "role": "taker",
       "filled-points": "0.0",
-      「fee-deduct-state」:"done",
+      "fee-deduct-state":"done",
       "fee-deduct-currency": ""
     }
-    ...
   ]
 }
 ```
