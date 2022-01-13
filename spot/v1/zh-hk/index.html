@@ -407,9 +407,6 @@
                   <li>
                     <a href="#d166dca910-3" class="toc-h2 toc-link" data-title="常見錯誤碼">常見錯誤碼</a>
                   </li>
-                  <li>
-                    <a href="#1b3b6e16ee-2" class="toc-h2 toc-link" data-title="常見問題">常見問題</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -493,7 +490,7 @@
                     <a href="#d166dca910-5" class="toc-h2 toc-link" data-title="常見錯誤碼">常見錯誤碼</a>
                   </li>
                   <li>
-                    <a href="#1b3b6e16ee-3" class="toc-h2 toc-link" data-title="常見問題">常見問題</a>
+                    <a href="#1b3b6e16ee-2" class="toc-h2 toc-link" data-title="常見問題">常見問題</a>
                   </li>
               </ul>
           </li>
@@ -641,11 +638,11 @@
 <red><b>風險提示</b></red>：這兩個密鑰與賬號安全緊密相關，無論何時都請勿將二者<b>同時</b>向其它人透露。API Key的泄露可能會造成您的資產損失（即使未開通提幣權限），若發現API Key泄露請盡快刪除該API Key。
 </aside> 
 <h2 id='1174085f5c'>接口類型</h2>
-<p>火幣香港為用戶提供兩種接口，您可根據自己的使用場景和偏好來選擇適合的方式進行查詢行情、交易或提幣。  </p>
+<p>火幣香港為用戶提供兩種接口，您可根據自己的使用場景和偏好來選擇適合的方式進行查詢行情、交易。  </p>
 <h3 id='rest-api'>REST API</h3>
 <p>REST，即Representational State Transfer的縮寫，是目前較為流行的基於HTTP的一種通信機製，每一個URL代表一種資源。</p>
 
-<p>交易或資產提幣等一次性操作，建議開發者使用REST API進行操作。</p>
+<p>交易等一次性操作，建議開發者使用REST API進行操作。</p>
 <h3 id='websocket-api'>WebSocket API</h3>
 <p>WebSocket是HTML5一種新的協議（Protocol）。它實現了客戶端與服務器全雙工通信，通過一次簡單的握手就可以建立客戶端和服務器連接，服務器可以根據業務規則主動推送信息給客戶端。</p>
 
@@ -1653,7 +1650,7 @@ api.huobi.com.hk\n
 <td>withdrawQuotaPerDay</td>
 <td>true</td>
 <td>string</td>
-<td>當日提幣額度（新加坡時區）</td>
+<td>當日提幣額度（香港時區）</td>
 <td></td>
 </tr>
 <tr>
@@ -1770,7 +1767,7 @@ api.huobi.com.hk\n
 
 <p>行情接口提供的數據每1分鐘更新一次</p>
 <h2 id='k'>K 線數據（蠟燭圖）</h2>
-<p>此接口返回歷史K線數據。K線周期以新加坡時間為基準開始計算，例如日K線的起始周期為新加坡時間0時至新加坡時間次日0時。</p>
+<p>此接口返回歷史K線數據。K線周期以香港時間為基準開始計算，例如日K線的起始周期為香港時間0時至香港時間次日0時。</p>
 
 <aside class="notice">當前 REST API 不支持自定義時間區間，如需要歷史固定時間範圍的數據，請參考 Websocket API 中的 K 線接口。</aside>
 
@@ -1843,7 +1840,7 @@ api.huobi.com.hk\n
 <tr>
 <td>id</td>
 <td>long</td>
-<td>調整為新加坡時間的時間戳，單位秒，並以此作為此K線柱的id</td>
+<td>調整為香港時間的時間戳，單位秒，並以此作為此K線柱的id</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -2053,22 +2050,22 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <tr>
 <td>open</td>
 <td>float</td>
-<td>開盤價（以新加坡時間自然日計）</td>
+<td>開盤價（以香港時間自然日計）</td>
 </tr>
 <tr>
 <td>close</td>
 <td>float</td>
-<td>最新價（以新加坡時間自然日計）</td>
+<td>最新價（以香港時間自然日計）</td>
 </tr>
 <tr>
 <td>low</td>
 <td>float</td>
-<td>最低價（以新加坡時間自然日計）</td>
+<td>最低價（以香港時間自然日計）</td>
 </tr>
 <tr>
 <td>high</td>
 <td>float</td>
-<td>最高價（以新加坡時間自然日計）</td>
+<td>最高價（以香港時間自然日計）</td>
 </tr>
 <tr>
 <td>vol</td>
@@ -2221,7 +2218,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>調整為新加坡時間的時間戳，單位毫秒</td>
+<td>調整為香港時間的時間戳，單位毫秒</td>
 </tr>
 <tr>
 <td>version</td>
@@ -2315,7 +2312,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>調整為新加坡時間的時間戳，單位毫秒</td>
+<td>調整為香港時間的時間戳，單位毫秒</td>
 </tr>
 <tr>
 <td>direction</td>
@@ -2398,7 +2395,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='8cee0e29db-7'>響應數據</h3>
-<aside class="notice">返回的數據對象是一個對象數組，每個數組元素為一個調整為新加坡時間的時間戳（單位毫秒）下的所有交易記錄，這些交易記錄以數組形式呈現。</aside>
+<aside class="notice">返回的數據對象是一個對象數組，每個數組元素為一個調整為香港時間的時間戳（單位毫秒）下的所有交易記錄，這些交易記錄以數組形式呈現。</aside>
 
 <table><thead>
 <tr>
@@ -2430,7 +2427,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>調整為新加坡時間的時間戳，單位毫秒</td>
+<td>調整為香港時間的時間戳，單位毫秒</td>
 </tr>
 <tr>
 <td>direction</td>
@@ -2736,13 +2733,6 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td></td>
 </tr>
 <tr>
-<td>state</td>
-<td>true</td>
-<td>string</td>
-<td>賬戶狀態</td>
-<td>normal：正常，locked：凍結</td>
-</tr>
-<tr>
 <td>suspense</td>
 <td>true</td>
 <td>string</td>
@@ -2998,11 +2988,11 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 </tr>
 </tbody></table>
 <h1 id='db162e824e'>錢包（充提相關）</h1><h2 id='82fb364030-5'>簡介</h2>
-<p>充提相關接口提供了充幣地址、提幣地址、提幣額度、充提記錄等查詢，以及提幣、取消提幣等功能。</p>
+<p>充提相關接口提供了充幣地址、提幣地址、提幣額度、充提記錄等查詢功能。</p>
 
 <aside class="notice">訪問充提相關的接口需要進行簽名認證。</aside>
 <h2 id='c9efc405f9'>充幣地址查詢</h2>
-<p>此節點用於查詢特定幣種（IOTA除外）在其所在區塊鏈中的充幣地址，母子用戶均可用</p>
+<p>此節點用於查詢特定幣種（IOTA除外）在其所在區塊鏈中的充幣地址。</p>
 
 <p>API Key 權限：讀取<br>
 限頻值（NEW）：20次/2s</p>
@@ -3383,7 +3373,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>tx-hash</td>
 <td>true</td>
 <td>string</td>
-<td>交易哈希。如果是「快速提幣」，則提幣不通過區塊鏈，該值為空。</td>
+<td>交易哈希。</td>
 <td></td>
 </tr>
 <tr>
@@ -3594,49 +3584,6 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <td>強製字段缺失</td>
 </tr>
 </tbody></table>
-<h2 id='1b3b6e16ee-2'>常見問題</h2><h3 id='q1-api-not-support-temp-addr'>Q1：為什麽創建提幣時返回api-not-support-temp-addr錯誤？</h3>
-<p>A：因安全考慮，API創建提幣時僅支持已在提幣地址列表中的地址，暫不支持使用API添加地址至提幣地址列表中，需在網頁端或APP端添加地址後才可在API中進行提幣操作。</p>
-<h3 id='q2-usdt-invaild-address'>Q2：為什麽USDT提幣時返回Invaild-Address錯誤？</h3>
-<p>A：USDT幣種為典型的一幣多鏈幣種， 創建提幣訂單時應填寫chain參數對應地址類型。以下表格展示了鏈和chain參數的對應關系：</p>
-
-<table><thead>
-<tr>
-<th>鏈</th>
-<th>chain 參數</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ERC20 （默認）</td>
-<td>usdterc20</td>
-</tr>
-<tr>
-<td>OMNI</td>
-<td>usdt</td>
-</tr>
-<tr>
-<td>TRX</td>
-<td>trc20usdt</td>
-</tr>
-</tbody></table>
-
-<p>如果chain參數為空，則默認的鏈為ERC20，或者也可以顯示將參數賦值為<code>usdterc20</code>。</p>
-
-<p>如果要提幣到OMNI或者TRX，則chain參數應該填寫usdt或者trc20usdt。chain參數可使用值請參考 <code>GET /v2/reference/currencies</code> 接口。</p>
-<h3 id='q3-fee'>Q3：創建提幣時fee字段應該怎麽填？</h3>
-<p>A：請參考 GET /v2/reference/currencies接口返回值，返回信息中withdrawFeeType為提幣手續費類型，根據類型選擇對應字段設置提幣手續費。 </p>
-
-<p>提幣手續費類型包含：  </p>
-
-<ul>
-<li>transactFeeWithdraw : 單次提幣手續費（僅對固定類型有效，withdrawFeeType=fixed）<br></li>
-<li>minTransactFeeWithdraw : 最小單次提幣手續費（僅對區間類型有效，withdrawFeeType=circulated or ratio） </li>
-<li>maxTransactFeeWithdraw : 最大單次提幣手續費（僅對區間類型和有上限的比例類型有效，withdrawFeeType=circulated or ratio</li>
-<li>transactFeeRateWithdraw :  單次提幣手續費率（僅對比例類型有效，withdrawFeeType=ratio）</li>
-</ul>
-<h3 id='q4'>Q4：如何查看我的提幣額度？</h3>
-<p>A：請參考/v2/account/withdraw/quota接口返回值，返回信息中包含您查詢幣種的單次、當日提幣額度以及剩余額度的信息。 </p>
-
-<p>若您有大額提幣需求，且提幣數額超出相關限額，可聯系官方客服進行溝通。  </p>
 <h1 id='1c75053ba4'>子用戶管理</h1><h2 id='82fb364030-6'>簡介</h2>
 <p>子用戶管理接口提供了子用戶的查詢、權限設置、轉賬，子用戶API Key的創建、修改、查詢、刪除，子用戶充提地址、余額的查詢等功能。</p>
 
@@ -5111,7 +5058,7 @@ Response:</p>
 <tr>
 <td>created-at</td>
 <td>int</td>
-<td>訂單創建的調整為新加坡時間的時間戳，單位毫秒</td>
+<td>訂單創建的調整為香港時間的時間戳，單位毫秒</td>
 </tr>
 <tr>
 <td>type</td>
@@ -6342,7 +6289,7 @@ Response:</p>
 <td>start-date</td>
 <td>false</td>
 <td>string</td>
-<td>查詢開始日期（新加坡時區）日期格式yyyy-mm-dd</td>
+<td>查詢開始日期（香港時區）日期格式yyyy-mm-dd</td>
 <td>-1d 查詢結束日期的前1天</td>
 <td>取值範圍 [((end-date) – 1), (end-date)] ，查詢窗口最大為2天，窗口平移範圍為最近61天。</td>
 </tr>
@@ -6350,7 +6297,7 @@ Response:</p>
 <td>end-date</td>
 <td>false</td>
 <td>string</td>
-<td>查詢結束日期（新加坡時區）, 日期格式yyyy-mm-dd</td>
+<td>查詢結束日期（香港時區）, 日期格式yyyy-mm-dd</td>
 <td>today</td>
 <td>取值範圍 [(today-60), today] ，查詢窗口最大為2天，窗口平移範圍為最近61天</td>
 </tr>
@@ -6728,14 +6675,6 @@ Response:</p>
 <td>該賬戶不存在</td>
 </tr>
 <tr>
-<td>operation-forbidden-for-fl-account-state</td>
-<td>賬戶爆倉狀態下禁止訂單操作</td>
-</tr>
-<tr>
-<td>sub-user-auth-required</td>
-<td>子用戶未開通逐倉杠桿權限</td>
-</tr>
-<tr>
 <td>order-disabled</td>
 <td>交易對暫停，無法下單</td>
 </tr>
@@ -6824,28 +6763,12 @@ Response:</p>
 <td>更新數據錯誤</td>
 </tr>
 <tr>
-<td>order-fl-cancellation-is-disallowed</td>
-<td>禁止撤銷爆倉單</td>
-</tr>
-<tr>
-<td>operation-forbidden-for-fl-account-state</td>
-<td>賬戶爆倉狀態下禁止訂單操作</td>
-</tr>
-<tr>
 <td>operation-forbidden-for-lock-account-state</td>
-<td>賬戶lock狀態下禁止訂單操作或c2c借款賬戶被禁止下撤單</td>
-</tr>
-<tr>
-<td>fl-order-already-existed</td>
-<td>爆倉單已經存在 而且未成交</td>
+<td>賬戶lock狀態下禁止訂單操作</td>
 </tr>
 <tr>
 <td>order-user-cancel-forbidden</td>
 <td>訂單類型為IOC或FOK 不允許撤單</td>
-</tr>
-<tr>
-<td>account-state-invalid</td>
-<td>不支持的爆倉賬戶狀態</td>
 </tr>
 <tr>
 <td>order-price-greater-than-limit</td>
@@ -6897,7 +6820,7 @@ Response:</p>
 </tr>
 <tr>
 <td>symbol-not-support</td>
-<td>交易對不支持，全倉杠桿或c2c</td>
+<td>交易對不支持</td>
 </tr>
 <tr>
 <td>not-found</td>
@@ -6920,7 +6843,7 @@ Response:</p>
 <td>內部系統錯誤</td>
 </tr>
 </tbody></table>
-<h2 id='1b3b6e16ee-3'>常見問題</h2><h3 id='q1-client-order-id'>Q1：client-order-id是什麽？</h3>
+<h2 id='1b3b6e16ee-2'>常見問題</h2><h3 id='q1-client-order-id'>Q1：client-order-id是什麽？</h3>
 <p>A： client-order-id作為下單請求標識的一個參數，類型為字符串，長度為64。 此id為用戶自己生成，8小時內有效。如果是終態訂單僅2小時有效。</p>
 <h3 id='q2'>Q2：如何獲取下單數量、金額、小數限製、精度的信息？</h3>
 <p>A： 可使用 Rest API <code>GET /v1/common/symbols</code> 獲取相關幣對信息， 下單時註意最小下單數量和最小下單金額的區別。 </p>
@@ -6958,20 +6881,17 @@ Response:</p>
 <h3 id='q6'>Q6: 為什麽基於當前盤口買一或者賣一價格進行下單觸發了下單限價錯誤？</h3>
 <p>A: 當前火幣有基於最新成交價上下一定幅度的限價保護，對流動性不好的幣，基於盤口數據下單可能會觸發限價保護。建議基於ws推送的成交價+盤口數據信息進行下單</p>
 <h1 id='60bd10ac69'>策略委托</h1><h2 id='82fb364030-8'>簡介</h2>
-<p>策略委托，目前僅包括計劃委托及追蹤委托。與現有止盈止損訂單相比，計劃委托/追蹤委托有以下顯著不同 –<br>特別說明，如遇行情或其他極端情況，策略委托單可能會延遲觸發。</p>
+<p>策略委托，目前僅包括計劃委托。 –<br>特別說明，如遇行情或其他極端情況，策略委托單可能會延遲觸發。</p>
 
-<p>1）    計劃委托/追蹤委托被創建後，未觸發前，交易所將不會凍結委托保證金。僅當計劃委托成功觸發後，交易所才會凍結該委托的保證金。<br>
-2）    計劃委托支持限價單和市價單類型，追蹤委托僅支持市價單。<br>
-3）    追蹤委托是一種更高級的計劃委托。通常的計劃委托僅可設置觸發價一個條件，當市場最新價格達到觸發價時，該訂單即被送入撮合。追蹤委托在計劃委托的基礎上增加了一個設定條件，即回調幅度。當市場最新價達到設定的觸發價時，該追蹤委托並不會被送入撮合，而是繼續等待市場價格回轉出現。當市場價格回轉幅度達到設定的回調幅度時，該追蹤委托才會被送入撮合。火幣香港支持用戶設定的回調幅度範圍為0.1%~5%。<br></p>
+<p>1）    計劃委托被創建後，未觸發前，交易所將不會凍結委托保證金。僅當計劃委托成功觸發後，交易所才會凍結該委托的保證金。<br>
+2）    計劃委托支持限價單和市價單類型。<br></p>
 
 <aside class="notice">訪問策略委托相關的接口需要進行簽名認證。</aside>
-
-<aside class="notice"> 在計劃委托/追蹤委托上線一段時間後，火幣香港可能會下線現有止盈止損訂單類型。屆時將另行通知。 </aside>
 <h2 id='146f376aec'>策略委托下單</h2>
 <p>POST /v2/algo-orders<br>
 API Key 權限：交易<br>
 限頻值（NEW）：20次/2秒<br>
-僅可通過此節點下單策略委托，不可通過現貨/杠桿交易相關接口下單策略委托<br></p>
+僅可通過此節點下單策略委托，不可通過現貨交易相關接口下單策略委托<br></p>
 <h3 id='ba05bab92e-39'>請求參數</h3>
 <table><thead>
 <tr>
@@ -7127,8 +7047,8 @@ API Key 權限：交易<br>
 API Key 權限：交易<br>
 限頻值（NEW）：20次/2秒<br>
 單次請求最多批量撤銷50張訂單<br>
-如需撤銷已成功觸發的訂單，須通過現貨/杠桿交易相關接口完成<br>
-如需撤銷未觸發的訂單，僅可通過此節點撤銷，不可通過現貨/杠桿交易相關接口撤銷<br></p>
+如需撤銷已成功觸發的訂單，須通過現貨交易相關接口完成<br>
+如需撤銷未觸發的訂單，僅可通過此節點撤銷，不可通過現貨交易相關接口撤銷<br></p>
 <h3 id='ba05bab92e-40'>請求參數</h3>
 <table><thead>
 <tr>
@@ -7208,7 +7128,7 @@ API Key 權限：讀取<br>
 限頻值（NEW）：20次/2秒<br>
 以orderOrigTime檢索<br>
 未觸發OPEN訂單，指的是已成功下單，但尚未觸發，訂單狀態orderStatus為created的訂單<br>
-未觸發OPEN訂單，可通過此節點查詢，但不可通過現貨/杠桿交易相關接口查詢<br></p>
+未觸發OPEN訂單，可通過此節點查詢，但不可通過現貨交易相關接口查詢<br></p>
 <h3 id='ba05bab92e-41'>請求參數</h3>
 <table><thead>
 <tr>
@@ -7431,8 +7351,8 @@ API Key 權限：讀取<br>
 限頻值（NEW）：20次/2秒<br>
 以orderOrigTime檢索<br>
 歷史終態訂單包括，觸發前被主動撤銷的策略委托（orderStatus=canceled），觸發失敗的策略委托（orderStatus=rejected），觸發成功的策略委托（orderStatus=triggered）。<br>
-如需查詢已成功觸發訂單的後續狀態，須通過現貨/杠桿交易相關接口完成<br>
-觸發前被主動撤銷的策略委托及觸發失敗的策略委托，可通過此節點查詢，但不可通過現貨/杠桿交易相關接口查詢<br></p>
+如需查詢已成功觸發訂單的後續狀態，須通過現貨交易相關接口完成<br>
+觸發前被主動撤銷的策略委托及觸發失敗的策略委托，可通過此節點查詢，但不可通過現貨交易相關接口查詢<br></p>
 <h3 id='ba05bab92e-42'>請求參數</h3>
 <table><thead>
 <tr>
@@ -7702,8 +7622,8 @@ API Key 權限：讀取<br>
 API Key 權限：讀取<br>
 限頻值（NEW）：20次/2秒<br>
 以orderOrigTime檢索<br>
-如需查詢已成功觸發訂單的後續狀態，須通過現貨/杠桿交易相關接口完成<br>
-未觸發的策略委托及觸發失敗的策略委托，可通過此節點查詢，但不可通過現貨/杠桿交易相關接口查詢<br></p>
+如需查詢已成功觸發訂單的後續狀態，須通過現貨交易相關接口完成<br>
+未觸發的策略委托及觸發失敗的策略委托，可通過此節點查詢，但不可通過現貨交易相關接口查詢<br></p>
 <h3 id='ba05bab92e-43'>請求參數</h3>
 <table><thead>
 <tr>
@@ -8453,7 +8373,7 @@ API Key 權限：讀取<br>
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>新加坡時間的時間戳，單位毫秒</td>
+<td>香港時間的時間戳，單位毫秒</td>
 </tr>
 </tbody></table>
 
@@ -9586,10 +9506,11 @@ accessKey=0664b695-rfhfg2mkl3-abbf6c5d-49810&amp;signatureMethod=HmacSHA256&amp;
 </tr>
 </tbody></table>
 
-<p>註：<br>
-- 止盈止損訂單在尚未被觸發時，接口將不會推送此訂單的創建；<br>
-- Taker訂單在成交前，接口首先推送其創建事件。<br>
-- 止盈止損訂單的訂單類型不再是原始訂單類型「buy-stop-limit」或「sell-stop-limit」，而是變為「buy-limit」或「sell-limit」。<br></p>
+<p>註：<br></p>
+
+<ul>
+<li>Taker訂單在成交前，接口首先推送其創建事件。<br></li>
+</ul>
 
 <blockquote>
 <p>Update example</p>
@@ -9715,7 +9636,6 @@ accessKey=0664b695-rfhfg2mkl3-abbf6c5d-49810&amp;signatureMethod=HmacSHA256&amp;
 </tbody></table>
 
 <p>註：<br>
-- 止盈止損訂單的訂單類型不再是原始訂單類型「buy-stop-limit」或「sell-stop-limit」，而是變為「buy-limit」或「sell-limit」。<br>
 - 當一張taker訂單同時與對手方多張訂單成交後，所產生的每筆成交（tradePrice, tradeVolume, tradeTime, tradeId, aggressor）將被分別推送（而不是合並推送一筆）。<br></p>
 
 <blockquote>
@@ -9817,8 +9737,7 @@ accessKey=0664b695-rfhfg2mkl3-abbf6c5d-49810&amp;signatureMethod=HmacSHA256&amp;
 </tr>
 </tbody></table>
 
-<p>註：<br>
-- 止盈止損訂單的訂單類型不再是原始訂單類型「buy-stop-limit」或「sell-stop-limit」，而是變為「buy-limit」或「sell-limit」。<br></p>
+<p>註：<br></p>
 <h2 id='6685ea7c65'>訂閱清算後成交及撤單更新</h2>
 <p>API Key 權限：讀取</p>
 
@@ -10135,8 +10054,6 @@ accessKey=0664b695-rfhfg2mkl3-abbf6c5d-49810&amp;signatureMethod=HmacSHA256&amp;
 <p>2、在賬戶余額發生變動或可用余額發生變動時均推送，且分別推送。</p>
 
 <p>3、在賬戶余額發生變動或可用余額發生變動時均推送，且一起推送。</p>
-
-<p>註意：現貨和合約之間的賬戶劃轉引起的賬戶余額變動，暫時沒有消息推送。</p>
 <h3 id='ae4e3bcdcc-3'>訂閱參數</h3>
 <table><thead>
 <tr>
