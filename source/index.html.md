@@ -73,13 +73,13 @@ search: true
 
 ## 接口類型
 
-火幣香港為用戶提供兩種接口，您可根據自己的使用場景和偏好來選擇適合的方式進行查詢行情、交易或提幣。  
+火幣香港為用戶提供兩種接口，您可根據自己的使用場景和偏好來選擇適合的方式進行查詢行情、交易。  
 
 ### REST API
 
 REST，即Representational State Transfer的縮寫，是目前較為流行的基於HTTP的一種通信機製，每一個URL代表一種資源。
 
-交易或資產提幣等一次性操作，建議開發者使用REST API進行操作。
+交易等一次性操作，建議開發者使用REST API進行操作。
 
 ### WebSocket API
 
@@ -837,7 +837,7 @@ curl "https://api.huobi.com.hk/v2/reference/currencies?currency=usdt"
 | depositStatus           | true     | string   | 充幣狀態                                                     | allowed,prohibited     |
 | minWithdrawAmt          | true     | string   | 單次最小提幣金額                                             |                        |
 | maxWithdrawAmt          | true     | string   | 單次最大提幣金額                                             |                        |
-| withdrawQuotaPerDay     | true     | string   | 當日提幣額度（新加坡時區）                                   |                        |
+| withdrawQuotaPerDay     | true     | string   | 當日提幣額度（香港時區）                                   |                        |
 | withdrawQuotaPerYear    | true     | string   | 當年提幣額度                                                 |                        |
 | withdrawQuotaTotal      | true     | string   | 總提幣額度                                                   |                        |
 | withdrawPrecision       | true     | int      | 提幣精度                                                     |                        |
@@ -890,7 +890,7 @@ curl "https://api.huobi.com.hk/v1/common/timestamp"
 
 ## K 線數據（蠟燭圖）
 
-此接口返回歷史K線數據。K線周期以新加坡時間為基準開始計算，例如日K線的起始周期為新加坡時間0時至新加坡時間次日0時。
+此接口返回歷史K線數據。K線周期以香港時間為基準開始計算，例如日K線的起始周期為香港時間0時至香港時間次日0時。
 
 <aside class="notice">當前 REST API 不支持自定義時間區間，如需要歷史固定時間範圍的數據，請參考 Websocket API 中的 K 線接口。</aside>
 <aside class="notice">獲取 hb10 凈值時， symbol 請填寫 「hb10」。</aside>
@@ -932,7 +932,7 @@ curl "https://api.huobi.com.hk/market/history/kline?period=1day&size=200&symbol=
 
 | 字段名稱 | 數據類型 | 描述                                                    |
 | -------- | -------- | ------------------------------------------------------- |
-| id       | long     | 調整為新加坡時間的時間戳，單位秒，並以此作為此K線柱的id |
+| id       | long     | 調整為香港時間的時間戳，單位秒，並以此作為此K線柱的id |
 | amount   | float    | 以基礎幣種計量的交易量                                  |
 | count    | integer  | 交易次數                                                |
 | open     | float    | 本階段開盤價                                            |
@@ -1051,10 +1051,10 @@ curl "https://api.huobi.com.hk/market/tickers"
 | -------- | -------- | ---------------------------------------- |
 | amount   | float    | 以基礎幣種計量的交易量（以滾動24小時計） |
 | count    | integer  | 交易筆數（以滾動24小時計）               |
-| open     | float    | 開盤價（以新加坡時間自然日計）           |
-| close    | float    | 最新價（以新加坡時間自然日計）           |
-| low      | float    | 最低價（以新加坡時間自然日計）           |
-| high     | float    | 最高價（以新加坡時間自然日計）           |
+| open     | float    | 開盤價（以香港時間自然日計）           |
+| close    | float    | 最新價（以香港時間自然日計）           |
+| low      | float    | 最低價（以香港時間自然日計）           |
+| high     | float    | 最高價（以香港時間自然日計）           |
 | vol      | float    | 以報價幣種計量的交易量（以滾動24小時計） |
 | symbol   | string   | 交易對，例如btcusdt, ethbtc              |
 | bid      | float    | 買一價                                   |
@@ -1125,7 +1125,7 @@ curl "https://api.huobi.com.hk/market/depth?symbol=btcusdt&type=step2"
 
 | 字段名稱 | 數據類型 | 描述                               |
 | -------- | -------- | ---------------------------------- |
-| ts       | integer  | 調整為新加坡時間的時間戳，單位毫秒 |
+| ts       | integer  | 調整為香港時間的時間戳，單位毫秒 |
 | version  | integer  | 內部字段                           |
 | bids     | object   | 當前的所有買單 [price, size]       |
 | asks     | object   | 當前的所有賣單 [price, size]       |
@@ -1176,7 +1176,7 @@ curl "https://api.huobi.com.hk/market/trade?symbol=ethusdt"
 | trade-id  | integer  | 唯一成交ID（NEW）                                  |
 | amount    | float    | 以基礎幣種為單位的交易量                           |
 | price     | float    | 以報價幣種為單位的成交價格                         |
-| ts        | integer  | 調整為新加坡時間的時間戳，單位毫秒                 |
+| ts        | integer  | 調整為香港時間的時間戳，單位毫秒                 |
 | direction | string   | 交易方向：「buy」 或 「sell」, 「buy」 即買，「sell」 即賣 |
 
 ## 獲得近期交易記錄
@@ -1242,7 +1242,7 @@ curl "https://api.huobi.com.hk/market/history/trade?symbol=ethusdt&size=2"
 
 ### 響應數據
 
-<aside class="notice">返回的數據對象是一個對象數組，每個數組元素為一個調整為新加坡時間的時間戳（單位毫秒）下的所有交易記錄，這些交易記錄以數組形式呈現。</aside>
+<aside class="notice">返回的數據對象是一個對象數組，每個數組元素為一個調整為香港時間的時間戳（單位毫秒）下的所有交易記錄，這些交易記錄以數組形式呈現。</aside>
 
 | 參數      | 數據類型 | 描述                                               |
 | --------- | -------- | -------------------------------------------------- |
@@ -1250,7 +1250,7 @@ curl "https://api.huobi.com.hk/market/history/trade?symbol=ethusdt&size=2"
 | trade-id  | integer  | 唯一成交ID（NEW）                                  |
 | amount    | float    | 以基礎幣種為單位的交易量                           |
 | price     | float    | 以報價幣種為單位的成交價格                         |
-| ts        | integer  | 調整為新加坡時間的時間戳，單位毫秒                 |
+| ts        | integer  | 調整為香港時間的時間戳，單位毫秒                 |
 | direction | string   | 交易方向：「buy」 或 「sell」, 「buy」 即買，「sell」 即賣 |
 
 ## 最近24小時行情數據
@@ -1412,7 +1412,6 @@ API Key 權限：讀取<br>
 | data    | true     | object    |  |                              |
 | { balance     | true     | string   | 可用余額 | |
 | currency     | true     | string   | 幣種 | |
-| state     | true     | string   | 賬戶狀態 | normal：正常，locked：凍結|
 | suspense     | true     | string   | 凍結余額 | |
 | type }     | true     | string   | 賬戶類別 | asset：資金賬戶|
 | message     | false     | string   | 錯誤信息（英文） | |
@@ -1536,13 +1535,13 @@ API Key 權限：交易<br>
 
 ## 簡介
 
-充提相關接口提供了充幣地址、提幣地址、提幣額度、充提記錄等查詢，以及提幣、取消提幣等功能。
+充提相關接口提供了充幣地址、提幣地址、提幣額度、充提記錄等查詢功能。
 
 <aside class="notice">訪問充提相關的接口需要進行簽名認證。</aside>
 
 ## 充幣地址查詢
 
-此節點用於查詢特定幣種（IOTA除外）在其所在區塊鏈中的充幣地址，母子用戶均可用
+此節點用於查詢特定幣種（IOTA除外）在其所在區塊鏈中的充幣地址。
 
 API Key 權限：讀取<br>
 限頻值（NEW）：20次/2s
@@ -1706,7 +1705,7 @@ API Key 權限：讀取<br>
 | id          | true     | long     | 充幣或者提幣訂單id，翻頁查詢時from參數取自此值               |                                          |
 | type        | true     | string   | 類型                                                         | 'deposit', 'withdraw', 子用戶僅有deposit |
 | currency    | true     | string   | 幣種                                                         |                                          |
-| tx-hash     | true     | string   | 交易哈希。如果是「快速提幣」，則提幣不通過區塊鏈，該值為空。   |                                          |
+| tx-hash     | true     | string   | 交易哈希。 |                                          |
 | chain       | true     | string   | 鏈名稱                                                       |                                          |
 | amount      | true     | float    | 個數                                                         |                                          |
 | address     | true     | string   | 目的地址                                                     |                                          |
@@ -1760,38 +1759,7 @@ API Key 權限：讀取<br>
 | 2002   | invalid field value in "field name"  | 非法字段取值 |
 | 2003   | missing mandatory field "field name" | 強製字段缺失 |
 
-## 常見問題
 
-### Q1：為什麽創建提幣時返回api-not-support-temp-addr錯誤？
-A：因安全考慮，API創建提幣時僅支持已在提幣地址列表中的地址，暫不支持使用API添加地址至提幣地址列表中，需在網頁端或APP端添加地址後才可在API中進行提幣操作。
-
-### Q2：為什麽USDT提幣時返回Invaild-Address錯誤？
-A：USDT幣種為典型的一幣多鏈幣種， 創建提幣訂單時應填寫chain參數對應地址類型。以下表格展示了鏈和chain參數的對應關系：
-
-| 鏈             | chain 參數 |
-| -------------- | ---------- |
-| ERC20 （默認） | usdterc20  |
-| OMNI           | usdt       |
-| TRX            | trc20usdt  |
-
-如果chain參數為空，則默認的鏈為ERC20，或者也可以顯示將參數賦值為`usdterc20`。
-
-如果要提幣到OMNI或者TRX，則chain參數應該填寫usdt或者trc20usdt。chain參數可使用值請參考 `GET /v2/reference/currencies` 接口。
-
-### Q3：創建提幣時fee字段應該怎麽填？
-A：請參考 GET /v2/reference/currencies接口返回值，返回信息中withdrawFeeType為提幣手續費類型，根據類型選擇對應字段設置提幣手續費。 
-
-提幣手續費類型包含：  
-
-- transactFeeWithdraw : 單次提幣手續費（僅對固定類型有效，withdrawFeeType=fixed）  
-- minTransactFeeWithdraw : 最小單次提幣手續費（僅對區間類型有效，withdrawFeeType=circulated or ratio） 
-- maxTransactFeeWithdraw : 最大單次提幣手續費（僅對區間類型和有上限的比例類型有效，withdrawFeeType=circulated or ratio
-- transactFeeRateWithdraw :  單次提幣手續費率（僅對比例類型有效，withdrawFeeType=ratio）
-
-### Q4：如何查看我的提幣額度？
-A：請參考/v2/account/withdraw/quota接口返回值，返回信息中包含您查詢幣種的單次、當日提幣額度以及剩余額度的信息。 
-
-若您有大額提幣需求，且提幣數額超出相關限額，可聯系官方客服進行溝通。  
 
 # 子用戶管理
 
@@ -2589,7 +2557,7 @@ API Key 權限：讀取<br>
 | client-order-id    | string   | 用戶自編訂單號（所有open訂單可返回client-order-id）    |
 | symbol             | string   | 交易對, 例如btcusdt, ethbtc                            |
 | price              | string   | limit order的交易價格                                  |
-| created-at         | int      | 訂單創建的調整為新加坡時間的時間戳，單位毫秒           |
+| created-at         | int      | 訂單創建的調整為香港時間的時間戳，單位毫秒           |
 | type               | string   | 訂單類型                                               |
 | filled-amount      | string   | 訂單中已成交部分的數量                                 |
 | filled-cash-amount | string   | 訂單中已成交部分的總價格                               |
@@ -3078,8 +3046,8 @@ API Key 權限：讀取<br>
 | types      | false    | string | 查詢的訂單類型組合，使用','分割                              | all                         | 所有可能的訂單類型（見本章節簡介）                           |
 | start-time | false    | long   | 查詢開始時間, 時間格式UTC time in millisecond。 以訂單生成時間進行查詢 | -48h 查詢結束時間的前48小時 | 取值範圍 [((end-time) – 48h), (end-time)] ，查詢窗口最大為48小時，窗口平移範圍為最近180天。 |
 | end-time   | false    | long   | 查詢結束時間, 時間格式UTC time in millisecond。 以訂單生成時間進行查詢 | present                     | 取值範圍 [(present-179d), present] ，查詢窗口最大為48小時，窗口平移範圍為最近180天。 |
-| start-date | false    | string | 查詢開始日期（新加坡時區）日期格式yyyy-mm-dd                 | -1d 查詢結束日期的前1天     | 取值範圍 [((end-date) – 1), (end-date)] ，查詢窗口最大為2天，窗口平移範圍為最近61天。 |
-| end-date   | false    | string | 查詢結束日期（新加坡時區）, 日期格式yyyy-mm-dd               | today                       | 取值範圍 [(today-60), today] ，查詢窗口最大為2天，窗口平移範圍為最近61天 |
+| start-date | false    | string | 查詢開始日期（香港時區）日期格式yyyy-mm-dd                 | -1d 查詢結束日期的前1天     | 取值範圍 [((end-date) – 1), (end-date)] ，查詢窗口最大為2天，窗口平移範圍為最近61天。 |
+| end-date   | false    | string | 查詢結束日期（香港時區）, 日期格式yyyy-mm-dd               | today                       | 取值範圍 [(today-60), today] ，查詢窗口最大為2天，窗口平移範圍為最近61天 |
 | from       | false    | string | 查詢起始 ID                                                  | N/A                         | 如果是向後查詢，則賦值為上一次查詢結果中得到的最後一條id（不是trade-id） ；如果是向前查詢，則賦值為上一次查詢結果中得到的第一條id（不是trade-id） |
 | direct     | false    | string | 查詢方向                                                     | next                        | prev 向前；next 向後                                         |
 | size       | false    | string | 查詢記錄大小                                                 | 100                         | [1，500]                                                     |
@@ -3227,8 +3195,6 @@ curl "https://api.huobi.com.hk/v2/reference/transact-fee-rate?symbols=btcusdt,et
 | base-operation-forbidden                                     | 用戶不在白名單內或該幣種不允許OTC交易等禁止行為              |
 | account-get-accounts-inexistent-error                        | 該賬戶在該用戶下不存在                                       |
 | account-account-id-inexistent                                | 該賬戶不存在                                                 |
-| operation-forbidden-for-fl-account-state                     | 賬戶爆倉狀態下禁止訂單操作                                   |
-| sub-user-auth-required                                       | 子用戶未開通逐倉杠桿權限                                     |
 | order-disabled                                               | 交易對暫停，無法下單                                         |
 | cancel-disabled                                              | 交易對暫停，無法撤單                                         |
 | order-invalid-price                                          | 下單價格非法（如市價單不能有價格，或限價單價格超過市場價10%） |
@@ -3251,12 +3217,8 @@ curl "https://api.huobi.com.hk/v2/reference/transact-fee-rate?symbols=btcusdt,et
 | order-date-limit-error                                       | 查詢時間不能超過系統限製                                     |
 | order-source-invalid                                         | 訂單來源非法                                                 |
 | order-update-error                                           | 更新數據錯誤                                                 |
-| order-fl-cancellation-is-disallowed                          | 禁止撤銷爆倉單                                               |
-| operation-forbidden-for-fl-account-state                     | 賬戶爆倉狀態下禁止訂單操作                                   |
-| operation-forbidden-for-lock-account-state                   | 賬戶lock狀態下禁止訂單操作或c2c借款賬戶被禁止下撤單          |
-| fl-order-already-existed                                     | 爆倉單已經存在 而且未成交                                    |
+| operation-forbidden-for-lock-account-state                   | 賬戶lock狀態下禁止訂單操作          |
 | order-user-cancel-forbidden                                  | 訂單類型為IOC或FOK 不允許撤單                                |
-| account-state-invalid                                        | 不支持的爆倉賬戶狀態                                         |
 | order-price-greater-than-limit                               | 下單價格高於開盤前下單限製價格，請重新下單                   |
 | order-price-less-than-limit                                  | 下單價格低於開盤前下單限製價格，請重新下單                   |
 | order-stop-order-hit-trigger                                 | 止盈止損單下單被當前價觸發                                   |
@@ -3269,7 +3231,7 @@ curl "https://api.huobi.com.hk/v2/reference/transact-fee-rate?symbols=btcusdt,et
 | invalid-start-time                                           | 查詢起始時間含非法取值                                       |
 | invalid-end-time                                             | 查詢起始時間含非法取值                                       |
 | validation-constraints-required                              | 指定的必填參數缺失                                           |
-| symbol-not-support                                           | 交易對不支持，全倉杠桿或c2c                                  |
+| symbol-not-support                                           | 交易對不支持                                  |
 | not-found                                                    | 撤單時訂單不存在                                             |
 | base-not-found                                               | 未找到記錄                                                   |
 | base_record_invalid                                          | 訂單不存在 （傳錯訂單ID）                                    |
@@ -3323,21 +3285,19 @@ A: 當前火幣有基於最新成交價上下一定幅度的限價保護，對�
 
 ## 簡介
 
-策略委托，目前僅包括計劃委托及追蹤委托。與現有止盈止損訂單相比，計劃委托/追蹤委托有以下顯著不同 –<br>特別說明，如遇行情或其他極端情況，策略委托單可能會延遲觸發。
+策略委托，目前僅包括計劃委托。 –<br>特別說明，如遇行情或其他極端情況，策略委托單可能會延遲觸發。
 
-1）	計劃委托/追蹤委托被創建後，未觸發前，交易所將不會凍結委托保證金。僅當計劃委托成功觸發後，交易所才會凍結該委托的保證金。<br>
-2）	計劃委托支持限價單和市價單類型，追蹤委托僅支持市價單。<br>
-3）	追蹤委托是一種更高級的計劃委托。通常的計劃委托僅可設置觸發價一個條件，當市場最新價格達到觸發價時，該訂單即被送入撮合。追蹤委托在計劃委托的基礎上增加了一個設定條件，即回調幅度。當市場最新價達到設定的觸發價時，該追蹤委托並不會被送入撮合，而是繼續等待市場價格回轉出現。當市場價格回轉幅度達到設定的回調幅度時，該追蹤委托才會被送入撮合。火幣香港支持用戶設定的回調幅度範圍為0.1%~5%。<br>
+1）	計劃委托被創建後，未觸發前，交易所將不會凍結委托保證金。僅當計劃委托成功觸發後，交易所才會凍結該委托的保證金。<br>
+2）	計劃委托支持限價單和市價單類型。<br>
 
 <aside class="notice">訪問策略委托相關的接口需要進行簽名認證。</aside>
-<aside class="notice"> 在計劃委托/追蹤委托上線一段時間後，火幣香港可能會下線現有止盈止損訂單類型。屆時將另行通知。 </aside>
 
 ## 策略委托下單
 
 POST /v2/algo-orders<br>
 API Key 權限：交易<br>
 限頻值（NEW）：20次/2秒<br>
-僅可通過此節點下單策略委托，不可通過現貨/杠桿交易相關接口下單策略委托<br>
+僅可通過此節點下單策略委托，不可通過現貨交易相關接口下單策略委托<br>
 
 ### 請求參數
 |	名稱	|	類型	|	是否必需	|	默認值|	描述	|	取值範圍	|
@@ -3385,8 +3345,8 @@ POST /v2/algo-orders/cancellation<br>
 API Key 權限：交易<br>
 限頻值（NEW）：20次/2秒<br>
 單次請求最多批量撤銷50張訂單<br>
-如需撤銷已成功觸發的訂單，須通過現貨/杠桿交易相關接口完成<br>
-如需撤銷未觸發的訂單，僅可通過此節點撤銷，不可通過現貨/杠桿交易相關接口撤銷<br>
+如需撤銷已成功觸發的訂單，須通過現貨交易相關接口完成<br>
+如需撤銷未觸發的訂單，僅可通過此節點撤銷，不可通過現貨交易相關接口撤銷<br>
 
 ### 請求參數
 |	名稱	|	類型	|	是否必需	|	默認值|	描述	|	取值範圍	|
@@ -3423,7 +3383,7 @@ API Key 權限：讀取<br>
 限頻值（NEW）：20次/2秒<br>
 以orderOrigTime檢索<br>
 未觸發OPEN訂單，指的是已成功下單，但尚未觸發，訂單狀態orderStatus為created的訂單<br>
-未觸發OPEN訂單，可通過此節點查詢，但不可通過現貨/杠桿交易相關接口查詢<br>
+未觸發OPEN訂單，可通過此節點查詢，但不可通過現貨交易相關接口查詢<br>
 
 ### 請求參數
 |	名稱	|	類型	|	是否必需	|	默認值|	描述	|	取值範圍	|
@@ -3491,8 +3451,8 @@ API Key 權限：讀取<br>
 限頻值（NEW）：20次/2秒<br>
 以orderOrigTime檢索<br>
 歷史終態訂單包括，觸發前被主動撤銷的策略委托（orderStatus=canceled），觸發失敗的策略委托（orderStatus=rejected），觸發成功的策略委托（orderStatus=triggered）。<br>
-如需查詢已成功觸發訂單的後續狀態，須通過現貨/杠桿交易相關接口完成<br>
-觸發前被主動撤銷的策略委托及觸發失敗的策略委托，可通過此節點查詢，但不可通過現貨/杠桿交易相關接口查詢<br>
+如需查詢已成功觸發訂單的後續狀態，須通過現貨交易相關接口完成<br>
+觸發前被主動撤銷的策略委托及觸發失敗的策略委托，可通過此節點查詢，但不可通過現貨交易相關接口查詢<br>
 
 ### 請求參數
 |	名稱	|	類型	|	是否必需	|	默認值|	描述	|	取值範圍	|
@@ -3566,8 +3526,8 @@ GET /v2/algo-orders/specific<br>
 API Key 權限：讀取<br>
 限頻值（NEW）：20次/2秒<br>
 以orderOrigTime檢索<br>
-如需查詢已成功觸發訂單的後續狀態，須通過現貨/杠桿交易相關接口完成<br>
-未觸發的策略委托及觸發失敗的策略委托，可通過此節點查詢，但不可通過現貨/杠桿交易相關接口查詢<br>
+如需查詢已成功觸發訂單的後續狀態，須通過現貨交易相關接口完成<br>
+未觸發的策略委托及觸發失敗的策略委托，可通過此節點查詢，但不可通過現貨交易相關接口查詢<br>
 
 ### 請求參數
 |	名稱	|	類型	|	是否必需	|	默認值|	描述	|	取值範圍	|
@@ -3997,7 +3957,7 @@ Websocket服務器同時支持一次性請求數據（pull）。
 | bids    | object   | 當前的所有買單 [price, size] |
 | asks    | object   | 當前的所有賣單 [price, size] |
 | version | integer  | 內部字段                     |
-| ts      | integer  | 新加坡時間的時間戳，單位毫秒 |
+| ts      | integer  | 香港時間的時間戳，單位毫秒 |
 
 <aside class="notice">當symbol被設為"hb10"時，amount, count, vol均為零值 </aside>
 ### 數據請求
@@ -4811,9 +4771,8 @@ API Key 權限：讀取
 | orderCreateTime | long     | 訂單創建時間                                                 |
 
 註：<br>
-- 止盈止損訂單在尚未被觸發時，接口將不會推送此訂單的創建；<br>
+
 - Taker訂單在成交前，接口首先推送其創建事件。<br>
-- 止盈止損訂單的訂單類型不再是原始訂單類型「buy-stop-limit」或「sell-stop-limit」，而是變為「buy-limit」或「sell-limit」。<br>
 
 > Update example
 
@@ -4866,7 +4825,6 @@ API Key 權限：讀取
 | execAmt       | string   | 該訂單累計成交量（市價買單為成交金額）                       |
 
 註：<br>
-- 止盈止損訂單的訂單類型不再是原始訂單類型「buy-stop-limit」或「sell-stop-limit」，而是變為「buy-limit」或「sell-limit」。<br>
 - 當一張taker訂單同時與對手方多張訂單成交後，所產生的每筆成交（tradePrice, tradeVolume, tradeTime, tradeId, aggressor）將被分別推送（而不是合並推送一筆）。<br>
 
 > Update example
@@ -4911,7 +4869,6 @@ API Key 權限：讀取
 | execAmt       | string   | 該訂單累計成交量（市價買單為成交金額）                       |
 | lastActTime   | long     | 訂單最近更新時間                                             |
 註：<br>
-- 止盈止損訂單的訂單類型不再是原始訂單類型「buy-stop-limit」或「sell-stop-limit」，而是變為「buy-limit」或「sell-limit」。<br>
 
 ## 訂閱清算後成交及撤單更新
 
@@ -5057,8 +5014,6 @@ API Key 權限：讀取
 2、在賬戶余額發生變動或可用余額發生變動時均推送，且分別推送。
 
 3、在賬戶余額發生變動或可用余額發生變動時均推送，且一起推送。
-
-註意：現貨和合約之間的賬戶劃轉引起的賬戶余額變動，暫時沒有消息推送。
 
 ### 訂閱參數
 
