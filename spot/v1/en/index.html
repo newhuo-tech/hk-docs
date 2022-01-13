@@ -613,7 +613,6 @@ The main content of each API document has three parts, the left hand side is the
 <ul>
 <li>Read permission: It is used to query the data, such as order query, trade query.</li>
 <li>Trade permission: It is used to create order, cancel order and transfer, etc.</li>
-<li>Withdraw permission: It is used to create withdraw order, cancel withdraw order, etc.</li>
 </ul>
 
 <p>Please remember below information after creation:</p>
@@ -629,7 +628,7 @@ The main content of each API document has three parts, the left hand side is the
 <h3 id='rest-api'>REST API</h3>
 <p>REST (Representational State Transfer) is one of the most popular communication mechanism under HTTP, each URL represents a type of resource.</p>
 
-<p>It is suggested to use Rest API for one-off operation, like trading and withdraw.</p>
+<p>It is suggested to use Rest API for one-off operation, like trading.</p>
 <h3 id='websocket-api'>WebSocket API</h3>
 <p>WebSocket is a new protocol in HTML5. It is full-duplex between client and server. The connection can be established by a single handshake, and then server can push the notification to client actively.</p>
 
@@ -1073,20 +1072,6 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 <p>UID is the unique ID for a user (including master user and sub user), it can be found in Web or App personal information part, or retrieved from API <code>GET /v2/user/uid</code>.</p>
 
 <p>The <code>account-id</code> defines the identity for different account type under one user, it can be retrieved from API <code>/v1/account/accounts</code> , where the <code>account-type</code> is the account types.</p>
-
-<p>The types include but not limited to below types, contract account types (futures/swap/option) are not included:</p>
-
-<ul>
-<li>spot: Spot account</li>
-<li>otc: OTC account</li>
-<li>margin: Isolated margin account, the detailed currency type is defined in <code>subType</code></li>
-<li>super-margin / cross-margin:  Cross-margin account</li>
-<li>investment: c2c margin lending account</li>
-<li>borrow: c2c margin borrowing account</li>
-<li>point: Point card account</li>
-<li>minepool: Minepool account</li>
-<li>etf: ETF account</li>
-</ul>
 <h3 id='q2-how-many-api-keys-one-user-can-apply'>Q2：How many API Keys one user can apply?</h3>
 <p>Every user can create 20 API Keys, and each API Key can be granted with 2 permissions: <strong>read</strong> and <strong>trade</strong></p>
 
@@ -1097,7 +1082,6 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 <ol>
 <li>Read permission: It is used to query data, for example, <strong>query orders</strong>, <strong>query trades</strong>.</li>
 <li>Trade permission: it is used to <strong>place order</strong>, <strong>cancel order</strong> and <strong>transfer</strong>.</li>
-<li>Withdraw permission: it is used to <strong>withdraw</strong>, <strong>cancel withdraw</strong>.</li>
 </ol>
 <h3 id='q3-why-apis-are-always-disconnected-or-timeout'>Q3：Why APIs are always disconnected or timeout?</h3>
 <p>Please follow below suggestions:</p>
@@ -1562,7 +1546,7 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 <td>withdrawQuotaPerDay</td>
 <td>true</td>
 <td>string</td>
-<td>Maximum withdraw amount in a day (Singapore timezone)</td>
+<td>Maximum withdraw amount in a day (Hong Kong timezone)</td>
 <td></td>
 </tr>
 <tr>
@@ -1672,7 +1656,7 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494900087029</span><span class="w">
 </span></code></pre><h3 id='response-content-4'>Response Content</h3>
-<p>The returned &quot;Data&quot; field contains an integer representing the timestamp in milliseconds adjusted to Singapore time.</p>
+<p>The returned &quot;Data&quot; field contains an integer representing the timestamp in milliseconds adjusted to Hong Kong time.</p>
 <h1 id='market-data'>Market Data</h1><h2 id='introduction-3'>Introduction</h2>
 <p>Market data APIs provide public market information such as varies of candlestick, depth and trade information.</p>
 
@@ -1943,22 +1927,22 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 <tr>
 <td>open</td>
 <td>float</td>
-<td>The opening price of a nature day (Singapore time)</td>
+<td>The opening price of a nature day (Hong Kong time)</td>
 </tr>
 <tr>
 <td>close</td>
 <td>float</td>
-<td>The closing price of a nature day (Singapore time)</td>
+<td>The closing price of a nature day (Hong Kong time)</td>
 </tr>
 <tr>
 <td>low</td>
 <td>float</td>
-<td>The lowest price of a nature day (Singapore time)</td>
+<td>The lowest price of a nature day (Hong Kong time)</td>
 </tr>
 <tr>
 <td>high</td>
 <td>float</td>
-<td>The highest price of a nature day (Singapore time)</td>
+<td>The highest price of a nature day (Hong Kong time)</td>
 </tr>
 <tr>
 <td>vol</td>
@@ -2132,7 +2116,7 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>The UNIX timestamp in milliseconds is adjusted to Singapore time</td>
+<td>The UNIX timestamp in milliseconds is adjusted to Hong Kong time</td>
 </tr>
 <tr>
 <td>version</td>
@@ -2225,7 +2209,7 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>The UNIX timestamp in milliseconds adjusted to Singapore time</td>
+<td>The UNIX timestamp in milliseconds adjusted to Hong Kong time</td>
 </tr>
 <tr>
 <td>direction</td>
@@ -2340,7 +2324,7 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>The UNIX timestamp in milliseconds adjusted to Singapore time</td>
+<td>The UNIX timestamp in milliseconds adjusted to Hong Kong time</td>
 </tr>
 <tr>
 <td>direction</td>
@@ -2540,7 +2524,7 @@ Rate Limit (NEW): 100times/2s</p>
 <td>type</td>
 <td>string</td>
 <td>The type of this account</td>
-<td>spot, margin, otc, point, super-margin, investment, borrow</td>
+<td>spot</td>
 </tr>
 </tbody></table>
 <h2 id='get-account-balance-of-a-fund-account'>Get Account Balance of a Fund Account</h2>
@@ -2615,13 +2599,6 @@ Rate Limit (NEW): 100times/2s</p>
 <td>string</td>
 <td>currency</td>
 <td></td>
-</tr>
-<tr>
-<td>state</td>
-<td>true</td>
-<td>string</td>
-<td>account status</td>
-<td>normal, locked</td>
 </tr>
 <tr>
 <td>suspense</td>
@@ -2717,7 +2694,7 @@ Rate Limit (NEW): 100times/2s</p>
 <td>true</td>
 <td>string</td>
 <td>Transfer out account type</td>
-<td>spot, margin</td>
+<td>spot</td>
 </tr>
 <tr>
 <td>from-account</td>
@@ -2738,7 +2715,7 @@ Rate Limit (NEW): 100times/2s</p>
 <td>true</td>
 <td>string</td>
 <td>Transfer in account type</td>
-<td>spot, margin</td>
+<td>spot</td>
 </tr>
 <tr>
 <td>to-account</td>
@@ -2869,7 +2846,7 @@ Rate Limit (NEW): 100times/2s</p>
 </tr>
 </tbody></table>
 <h1 id='wallet-deposit-and-withdraw'>Wallet (Deposit and Withdraw)</h1><h2 id='introduction-5'>Introduction</h2>
-<p>Wallet APIs provide query functionality for deposit address, withdraw address, withdraw quota, deposit and withdraw history, and also provide withdraw and cancel-withdraw functionality.</p>
+<p>Wallet APIs provide query functionality for deposit address, withdraw address, withdraw quota, deposit and withdraw history.</p>
 
 <aside class="notice">All endpoints in this section require authentication</aside>
 <h2 id='query-deposit-address'>Query Deposit Address</h2>
@@ -3150,7 +3127,7 @@ Rate Limit (NEW): 20times/2s</p>
 <td>true</td>
 <td>Define transfer type to search</td>
 <td></td>
-<td>deposit, withdraw, sub user can only use deposit</td>
+<td>deposit, withdraw</td>
 <td></td>
 </tr>
 <tr>
@@ -3218,7 +3195,7 @@ Rate Limit (NEW): 20times/2s</p>
 <tr>
 <td>type</td>
 <td>string</td>
-<td>Define transfer type to search, possible values: [deposit, withdraw] Sub-user can only put &quot;deposit&quot;</td>
+<td>Define transfer type to search, possible values: [deposit, withdraw]</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -3228,7 +3205,7 @@ Rate Limit (NEW): 20times/2s</p>
 <tr>
 <td>tx-hash</td>
 <td>string</td>
-<td>The on-chain transaction hash. If this is a &quot;fast withdraw&quot;, then it is not on-chain transfer, and this value is empty.</td>
+<td>The on-chain transaction hash</td>
 </tr>
 <tr>
 <td>chain</td>
@@ -3719,7 +3696,7 @@ By default, sub user’s trading permission in spot market is activated.</p>
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"132208121"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"isolated-margin"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"activation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"activated"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -3916,13 +3893,6 @@ By default, sub user’s trading permission in spot market is activated.</p>
 <td></td>
 </tr>
 <tr>
-<td>subType</td>
-<td>FALSE</td>
-<td>string</td>
-<td>Account sub type (only valid for accountType=isolated-margin)</td>
-<td></td>
-</tr>
-<tr>
 <td>accountStatus }}}</td>
 <td>TRUE</td>
 <td>string</td>
@@ -3965,7 +3935,7 @@ Rate Limit (NEW): 2times/2s</p>
 | Field    | Data Type | Description                                                  |
 | -------- | --------- | ------------------------------------------------------------ |
 | currency | string    | The currency of this balance                                 |
-| type     | string    | account type (spot, margin, point,super-margin)              |
+| type     | string    | account type (spot)              |
 | balance  | string    | The total balance in the main currency unit including all balance and frozen banlance |</p>
 <h2 id='get-account-balance-of-a-sub-user'>Get Account Balance of a Sub-User</h2>
 <p>API Key Permission：Read<br>
@@ -4217,8 +4187,8 @@ Rate Limit (NEW): 100times/2s</p>
 <td>string</td>
 <td>false</td>
 <td>spot-api</td>
-<td>When trade with spot use &#39;spot-api&#39;;When trade with isolated margin use &#39;margin-api&#39;; When trade with cross margin use &#39;super-margin-api&#39;;When trade with c2c-margin use &#39;c2c-margin-api&#39;;</td>
-<td>api, margin-api,super-margin-api,c2c-margin-api</td>
+<td>When trade with spot use &#39;spot-api&#39;</td>
+<td></td>
 </tr>
 <tr>
 <td>client-order-id</td>
@@ -4308,7 +4278,7 @@ Rate Limit (NEW): 50times/2s</p>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The account id, refer to <code>GET /v1/account/accounts</code>. Use &#39;spot&#39; <code>account-id</code> for spot trading, use &#39;margin&#39; <code>account-id</code> for isolated margin trading, use ‘super-margin’  <code>account-id</code> for cross margin trading. use borrow account id for c2c margin trading</td>
+<td>The account id, refer to <code>GET /v1/account/accounts</code>. Use &#39;spot&#39; <code>account-id</code> for spot trading</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -4343,7 +4313,7 @@ Rate Limit (NEW): 50times/2s</p>
 <td>string</td>
 <td>false</td>
 <td>spot-api</td>
-<td>When trade with spot use &#39;spot-api&#39;;When trade with margin use &#39;margin-api&#39;; When trade with super-margin use &#39;super-margin-api&#39;;When trade with c2c-margin use &#39;c2c-margin-api&#39;</td>
+<td>When trade with spot use &#39;spot-api&#39;</td>
 </tr>
 <tr>
 <td>client-order-id</td>
@@ -6220,20 +6190,12 @@ Rate Limit (NEW): 20times/2s</p>
 <td>The symbol is disabled for trading</td>
 </tr>
 <tr>
-<td>base-operation-forbidden</td>
-<td>The operation is forbidden for current user or the symbol is not allowed to trade over OTC</td>
-</tr>
-<tr>
 <td>account-get-accounts-inexistent-error</td>
 <td>The account doesn&#39;t exist in current user</td>
 </tr>
 <tr>
 <td>account-account-id-inexistent</td>
 <td>The account id doesn&#39;t exist</td>
-</tr>
-<tr>
-<td>sub-user-auth-required</td>
-<td>Isolated margin account is not enabled for sub user</td>
 </tr>
 <tr>
 <td>order-disabled</td>
@@ -6324,28 +6286,12 @@ Rate Limit (NEW): 20times/2s</p>
 <td>Order update error</td>
 </tr>
 <tr>
-<td>order-fl-cancellation-is-disallowed</td>
-<td>Liquidation order cannot be canceled</td>
-</tr>
-<tr>
-<td>operation-forbidden-for-fl-account-state</td>
-<td>The operation is forbidden when the account is in liquidation</td>
-</tr>
-<tr>
 <td>operation-forbidden-for-lock-account-state</td>
 <td>The operation is forbidden when the account is locked</td>
 </tr>
 <tr>
-<td>fl-order-already-existed</td>
-<td>An unfilled liquidation order already exists</td>
-</tr>
-<tr>
 <td>order-user-cancel-forbidden</td>
 <td>IOC or FOK order is not allowed to cancel</td>
-</tr>
-<tr>
-<td>account-state-invalid</td>
-<td>Invalid status of liquidation account</td>
 </tr>
 <tr>
 <td>order-price-greater-than-limit</td>
@@ -6396,10 +6342,6 @@ Rate Limit (NEW): 20times/2s</p>
 <td>The specified parameters is missing</td>
 </tr>
 <tr>
-<td>symbol-not-support</td>
-<td>The symbol is not support for cross margin or C2C</td>
-</tr>
-<tr>
 <td>not-found</td>
 <td>The order id is not found</td>
 </tr>
@@ -6442,20 +6384,13 @@ Rate Limit (NEW): 20times/2s</p>
 <p>A: The <code>match-id</code> is the identity for order matching, while the <code>trade-id</code> is the unique identifier for each trade. One <code>match-id</code> may be correlated with multiple <code>trade-id</code>, or no <code>trade-id</code>(if the order is cancelled). For example, if a taker&#39;s order got matched with 3 maker&#39;s orders at the same time, it generates 3 trade IDs but only one match ID.</p>
 <h3 id='q6-why-the-order-submission-could-be-rejected-even-though-the-order-price-is-set-as-same-as-current-best-bid-or-best-ask'>Q6: Why the order submission could be rejected even though the order price is set as same as current best bid (or best ask)?</h3>
 <p>A: For some extreme illiquid trading symbols, the best quote price at particular time might be far away from last trade price. But the price limit is actually based on last trade price which could possibly exclude best quote price from valid range for any new order. It is suggested to place orders based on the WebSocket pushed Bid and market data.</p>
-<h3 id='q7-how-to-retrieve-the-trading-symbols-for-margin-trade'>Q7: How to retrieve the trading symbols for margin trade</h3>
-<p>A: You can get details from Rest API <code>GET /v1/common/symbols</code>. The <code>leverage-ratio</code> represents the isolated-margin ratio. The <code>super-margin-leverage-ratio</code> represents the cross-margin.</p>
-
-<p>The value <code>0</code> indicates that the trading symbols doesn&#39;t support margin trading.</p>
 <h1 id='conditional-order'>Conditional Order</h1><h2 id='introduction-8'>Introduction</h2>
 <p>By comparing with the existing stop limit order, the newly introduced conditional order does have following major differences:<br></p>
 
 <p>1)  Although the newly introduced conditional order is also triggered by stop price, before it being triggered, the Exchange will not lock order margin for this order. Only when this conditional order being successfully triggered, its order margin will be locked.<br>
-2)  Conditional order does support not only limit order type but also market order type. (Trailing stop order only supports market order type.)<br>
-3)  As advanced conditional order, trailing stop order does support additional triggering condition i.e. trailing rate. Only when latest market price breaks stop price, and continues to go up (or down), and then reverts back for a certain percentage which exceeding the pre-defined &quot;trailing rate&quot;, this order can be triggered. The valid value range of trailing rate is between 0.1% and 5%.<br></p>
+2)  Conditional order does support not only limit order type but also market order type. <br></p>
 
 <aside class="notice">All endpoints in this section require authentication</aside>
-
-<aside class="notice">After the official launch of conditional order, Huobi Hong Kong Global might decommission the existing stop order later. This will be notified through another circular.</aside>
 <h2 id='place-a-conditional-order'>Place a conditional order</h2>
 <p>POST /v2/algo-orders<br>
 API Key Permission: Trade<br>
@@ -6478,7 +6413,7 @@ Conditional order can be only placed via this endpoint instead of any endpoint i
 <td>TRUE</td>
 <td></td>
 <td>Account ID</td>
-<td>At present only support spot account id, margin account id, super-margin account. C2C margin account id is not supported at this point of time.</td>
+<td>At present only support spot account id</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -7938,7 +7873,7 @@ While type is set as ‘step1’, ‘step2’, ‘step3’, ‘step4’, or ‘s
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>The UNIX timestamp in milliseconds adjusted to Singapore time</td>
+<td>The UNIX timestamp in milliseconds adjusted to Hong Kong time</td>
 </tr>
 </tbody></table>
 
@@ -9707,7 +9642,7 @@ The topic disseminates the current static value of individual accounts first, at
 <tr>
 <td>changeType</td>
 <td>string</td>
-<td>Change type, valid value: order-place,order-match,order-refund,order-cancel,order-fee-refund,margin-transfer,margin-loan,margin-interest,margin-repay,deposit,withdraw,other</td>
+<td>Change type, valid value: order-place,order-match,order-refund,order-cancel,order-fee-refund,deposit,withdraw,other</td>
 </tr>
 <tr>
 <td>accountType</td>
