@@ -37,7 +37,6 @@ Every user can create at most 20 API Keys, each can be applied with either permi
 
 - Read permission: It is used to query the data, such as order query, trade query.
 - Trade permission: It is used to create order, cancel order and transfer, etc.
-- Withdraw permission: It is used to create withdraw order, cancel withdraw order, etc.
 
 Please remember below information after creation:
 
@@ -63,7 +62,7 @@ There are two types of interface, you can choose the proper one according to you
 
 REST (Representational State Transfer) is one of the most popular communication mechanism under HTTP, each URL represents a type of resource.
 
-It is suggested to use Rest API for one-off operation, like trading and withdraw.
+It is suggested to use Rest API for one-off operation, like trading.
 
 ### WebSocket API
 
@@ -443,17 +442,6 @@ UID is the unique ID for a user (including master user and sub user), it can be 
 
 The `account-id` defines the identity for different account type under one user, it can be retrieved from API `/v1/account/accounts` , where the `account-type` is the account types.
 
-The types include but not limited to below types, contract account types (futures/swap/option) are not included:
-
-- spot: Spot account
-- otc: OTC account
-- margin: Isolated margin account, the detailed currency type is defined in `subType`
-- super-margin / cross-margin:  Cross-margin account
-- investment: c2c margin lending account
-- borrow: c2c margin borrowing account
-- point: Point card account
-- minepool: Minepool account
-- etf: ETF account
 
 ### Q2：How many API Keys one user can apply?
 
@@ -465,7 +453,7 @@ Below are the explanation for permissions:
 
 1. Read permission: It is used to query data, for example, **query orders**, **query trades**.
 2. Trade permission: it is used to **place order**, **cancel order** and **transfer**.
-3. Withdraw permission: it is used to **withdraw**, **cancel withdraw**.
+
 
 ### Q3：Why APIs are always disconnected or timeout?
 
@@ -747,7 +735,7 @@ API user could query static reference information for each currency, as well as 
 | depositStatus           | true      | string    | Deposit status                                               | allowed,prohibited     |
 | minWithdrawAmt          | true      | string    | Minimal withdraw amount in each request                      |                        |
 | maxWithdrawAmt          | true      | string    | Maximum withdraw amount in each request                      |                        |
-| withdrawQuotaPerDay     | true      | string    | Maximum withdraw amount in a day (Singapore timezone)        |                        |
+| withdrawQuotaPerDay     | true      | string    | Maximum withdraw amount in a day (Hong Kong timezone)        |                        |
 | withdrawQuotaPerYear    | true      | string    | Maximum withdraw amount in a year                            |                        |
 | withdrawQuotaTotal      | true      | string    | Maximum withdraw amount in total                             |                        |
 | withdrawPrecision       | true      | int       | Withdraw amount precision                                    |                        |
@@ -788,7 +776,7 @@ No parameter is needed for this endpoint.
 
 ### Response Content
 
-The returned "Data" field contains an integer representing the timestamp in milliseconds adjusted to Singapore time.
+The returned "Data" field contains an integer representing the timestamp in milliseconds adjusted to Hong Kong time.
 
 # Market Data
 
@@ -949,10 +937,10 @@ Response content is an array of object, each object has below fields.
 | ------- | --------- | ------------------------------------------------------------ |
 | amount  | float     | The aggregated trading volume in last 24 hours (rotating 24h) |
 | count   | integer   | The number of completed trades of last 24 hours (rotating 24h) |
-| open    | float     | The opening price of a nature day (Singapore time)           |
-| close   | float     | The closing price of a nature day (Singapore time)              |
-| low     | float     | The lowest price of a nature day (Singapore time)               |
-| high    | float     | The highest price of a nature day (Singapore time)              |
+| open    | float     | The opening price of a nature day (Hong Kong time)           |
+| close   | float     | The closing price of a nature day (Hong Kong time)              |
+| low     | float     | The lowest price of a nature day (Hong Kong time)               |
+| high    | float     | The highest price of a nature day (Hong Kong time)              |
 | vol     | float     | The aggregated trading value in last 24 hours (rotating 24h) |
 | symbol  | string    | The trading symbol of this object, e.g. btcusdt, bccbtc      |
 | bid     | float     | Best bid price                                               |
@@ -1046,7 +1034,7 @@ This endpoint retrieves the current order book of a specific pair.
 <aside class="notice">The returned data object is under 'tick' object instead of 'data' object in the top level JSON</aside>
 | Field   | Data Type | Description                                                  |
 | ------- | --------- | ------------------------------------------------------------ |
-| ts      | integer   | The UNIX timestamp in milliseconds is adjusted to Singapore time |
+| ts      | integer   | The UNIX timestamp in milliseconds is adjusted to Hong Kong time |
 | version | integer   | Internal data                                                |
 | bids    | object    | The current all bids in format [price, size]                 |
 | asks    | object    | The current all asks in format [price, size]                 |
@@ -1095,7 +1083,7 @@ This endpoint retrieves the latest trade with its price, volume, and direction.
 | trade-id  | integer   | The unique trade id (NEW)                                    |
 | amount    | float     | The trading volume in base currency                          |
 | price     | float     | The trading price in quote currency                          |
-| ts        | integer   | The UNIX timestamp in milliseconds adjusted to Singapore time |
+| ts        | integer   | The UNIX timestamp in milliseconds adjusted to Hong Kong time |
 | direction | string    | The direction of the taker trade: 'buy' or 'sell'            |
 
 ## Get the Most Recent Trades
@@ -1166,7 +1154,7 @@ This endpoint retrieves the most recent trades with their price, volume, and dir
 | trade-id  | integer   | The unique trade id (NEW)                                    |
 | amount    | float     | The trading volume in base currency                          |
 | price     | float     | The trading price in quote currency                          |
-| ts        | integer   | The UNIX timestamp in milliseconds adjusted to Singapore time |
+| ts        | integer   | The UNIX timestamp in milliseconds adjusted to Hong Kong time |
 | direction | string    | The direction of the taker trade: 'buy' or 'sell'            |
 
 ## Get the Last 24h Market Summary
@@ -1271,7 +1259,7 @@ This endpoint returns a list of accounts owned by this API user.
 | ------- | --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | id      | integer   | Unique account id                                            | NA                                                           |
 | state   | string    | Account state                                                | working, lock                                                |
-| type    | string    | The type of this account                                     | spot, margin, otc, point, super-margin, investment, borrow   |
+| type    | string    | The type of this account                                     | spot   |
 
 
 
@@ -1304,7 +1292,6 @@ This endpoint returns the balance of an account specified by account id.
 | data    | true     | object    |  |                              |
 | { balance     | true     | string   | available balance | |
 | currency     | true     | string   | currency | |
-| state     | true     | string   | account status | normal, locked|
 | suspense     | true     | string   | frozen account | |
 | type }     | true     | string   | account type | asset：fund account|
 | message     | false     | string   | error message（eng） | |
@@ -1355,10 +1342,10 @@ Other transfer functions will be gradually launched later, please take note on A
 | Parameter         | Required | Data Type | Description                | Values                            |
 | ----------------- | -------- | --------- | -------------------------- | --------------------------------- |
 | from-user         | true     | long      | Transfer out user uid      | parent user uid, sub user uid     |
-| from-account-type | true     | string    | Transfer out account type  | spot, margin                      |
+| from-account-type | true     | string    | Transfer out account type  | spot                    |
 | from-account      | true     | long      | Transfer out account id    |                                   |
 | to-user           | true     | long      | Transfer in user uid       | parent user uid, sub user uid     |
-| to-account-type   | true     | string    | Transfer in account type   | spot, margin                      |
+| to-account-type   | true     | string    | Transfer in account type   | spot                  |
 | to-account        | true     | long      | Transfer in account id     |                                   |
 | currency          | true     | string    | Currency name              | Refer to GET /v1/common/currencys |
 | amount            | true     | string    | Amount of fund to transfer |                                   |
@@ -1404,7 +1391,7 @@ Below is the error code, error message and description returned by Account APIs.
 
 ## Introduction
 
-Wallet APIs provide query functionality for deposit address, withdraw address, withdraw quota, deposit and withdraw history, and also provide withdraw and cancel-withdraw functionality.
+Wallet APIs provide query functionality for deposit address, withdraw address, withdraw quota, deposit and withdraw history.
 
 <aside class="notice">All endpoints in this section require authentication</aside>
 
@@ -1533,7 +1520,7 @@ Parent user and sub user search for all existed withdraws and deposits and retur
 | Parameter | Data Type | Required | Description                     | Value Range                                      | Default Value                                                |      |
 | --------- | --------- | -------- | ------------------------------- | ------------------------------------------------ | ------------------------------------------------------------ | ---- |
 | currency  | string    | false    | The crypto currency to withdraw | NA                                               | When currency is not specified, the response would include the records of ALL currencies. |      |
-| type      | string    | true     | Define transfer type to search  |       | deposit, withdraw, sub user can only use deposit                                                             |      |
+| type      | string    | true     | Define transfer type to search  |       | deposit, withdraw                                                            |      |
 | from      | string    | false    | The transfer id to begin search | 1 ~ latest record ID                             | When 'from' is not specified, the default value would be 1 if 'direct' is 'prev' with the response in ascending order, the default value would be the ID of latest record if 'direct' is 'next' with the response in descending order. |      |
 | size      | string    | false    | The number of items to return   | 1-500                                            | 100                                                          |      |
 | direct    | string    | false    | the order of response           | 'prev' (ascending), 'next' (descending)          | 'prev'                                                       |      |
@@ -1565,9 +1552,9 @@ Parent user and sub user search for all existed withdraws and deposits and retur
 | Field       | Data Type | Description                                                  |
 | ----------- | --------- | ------------------------------------------------------------ |
 | id          | integer   | Transfer id                                                  |
-| type        | string    | Define transfer type to search, possible values: [deposit, withdraw] Sub-user can only put "deposit"|
+| type        | string    | Define transfer type to search, possible values: [deposit, withdraw] |
 | currency    | string    | The crypto currency to withdraw                              |
-| tx-hash     | string    | The on-chain transaction hash. If this is a "fast withdraw", then it is not on-chain transfer, and this value is empty. |
+| tx-hash     | string    | The on-chain transaction hash |
 | chain       | string    | Block chain name                                             |
 | amount      | float     | The number of crypto asset transfered in its minimum unit    |
 | address     | string    | The deposit or withdraw target address                       |
@@ -1776,7 +1763,7 @@ By default, sub user’s trading permission in spot market is activated.
     "data": [
         {
             "subUid": "132208121",
-            "accountType": "isolated-margin",
+            "accountType": "spot",
             "activation": "activated"
         }
     ]
@@ -1829,7 +1816,6 @@ API Key Permission: Read
 | transferrable     | FALSE     | bool      | Transfer permission (only valid for accountType=spot)        | true, false                                       |
 | accountIds        | FALSE     | object    |                                                              |                                                   |
 | { accountId       | TRUE      | string    | Account ID                                                   |                                                   |
-| subType           | FALSE     | string    | Account sub type (only valid for accountType=isolated-margin) |                                                   |
 | accountStatus }}} | TRUE      | string    | Account status                                               | normal, locked                                    |
 
 
@@ -1878,7 +1864,7 @@ The returned "data" object is a list of aggregated balances
 | Field    | Data Type | Description                                                  |
 | -------- | --------- | ------------------------------------------------------------ |
 | currency | string    | The currency of this balance                                 |
-| type     | string    | account type (spot, margin, point,super-margin)              |
+| type     | string    | account type (spot)              |
 | balance  | string    | The total balance in the main currency unit including all balance and frozen banlance |
 
 
@@ -2030,7 +2016,7 @@ This endpoint places a new order and sends to the exchange to be matched.
 | type            | string    | true     | NA       | The order type                                               | buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-limit-maker, sell-limit-maker, buy-stop-limit, sell-stop-limit, buy-limit-fok, sell-limit-fok, buy-stop-limit-fok, sell-stop-limit-fok |
 | amount          | string    | true     | NA       | order size (for buy market order, it's order value)          | NA                                                           |
 | price           | string    | false    | NA       | The order price (not available for market order)             | NA                                                           |
-| source          | string    | false    | spot-api | When trade with spot use 'spot-api';When trade with isolated margin use 'margin-api'; When trade with cross margin use 'super-margin-api';When trade with c2c-margin use 'c2c-margin-api'; | api, margin-api,super-margin-api,c2c-margin-api              |
+| source          | string    | false    | spot-api | When trade with spot use 'spot-api'             |
 | client-order-id | string    | false    | NA       | Client order ID (maximum 64-character length, to be unique within 8 hours) |                                                              |
 | stop-price      | string    | false    | NA       | Trigger price of stop limit order                            |                                                              |
 | operator        | string    | false    | NA       | operation charactor of stop price                            | gte – greater than and equal (>=), lte – less than and equal (<=) |
@@ -2095,12 +2081,12 @@ A batch contains at most 10 orders.
 
 | Parameter       | Data Type | Required | Default  | Description                                                  |
 | --------------- | --------- | -------- | -------- | ------------------------------------------------------------ |
-| [{ account-id   | string    | true     | NA       | The account id, refer to `GET /v1/account/accounts`. Use 'spot' `account-id` for spot trading, use 'margin' `account-id` for isolated margin trading, use ‘super-margin’  `account-id` for cross margin trading. use borrow account id for c2c margin trading |
+| [{ account-id   | string    | true     | NA       | The account id, refer to `GET /v1/account/accounts`. Use 'spot' `account-id` for spot trading |
 | symbol          | string    | true     | NA       | The trading symbol, i.e. btcusdt, ethbtc...(Refer to `GET /v1/common/symbols`) |
 | type            | string    | true     | NA       | The type of order, including 'buy-market', 'sell-market', 'buy-limit', 'sell-limit', 'buy-ioc', 'sell-ioc', 'buy-limit-maker', 'sell-limit-maker' (refer to detail below), 'buy-stop-limit', 'sell-stop-limit', buy-limit-fok, sell-limit-fok, buy-stop-limit-fok, sell-stop-limit-fok. |
 | amount          | string    | true     | NA       | The order size (for buy market order, it's order value)      |
 | price           | string    | false    | NA       | The order price (not available for market order)             |
-| source          | string    | false    | spot-api | When trade with spot use 'spot-api';When trade with margin use 'margin-api'; When trade with super-margin use 'super-margin-api';When trade with c2c-margin use 'c2c-margin-api' |
+| source          | string    | false    | spot-api | When trade with spot use 'spot-api'|
 | client-order-id | string    | false    | NA       | Client order ID (maximum 64-character length)                |
 | stop-price      | string    | false    | NA       | Trigger price of stop limit order                            |
 | operator}]      | string    | false    | NA       | Operation character of stop price, use 'gte' for greater than and equal (>=), use 'lte' for less than and equal (<=) |
@@ -2994,15 +2980,13 @@ Below is the error code and description returned by Trading APIs
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | base-argument-unsupported                                    | The specified parameter is not supported                     |
 | base-system-error                                            | System internel error. For placing or canceling order, it is mostly due to cache issue, please try again later. |
-| login-required                                               | Signature is missing, or user not find (key and uid not match).                                        |
+| login-required                                               | Signature is missing, or user not find (key and uid not match).                                        
 | parameter-required                                           | Stop-price or operator parameter is missing for stop-order type |
 | base-record-invalid                                          | Failed to get data, please try again later                   |
 | order-amount-over-limit                                      | The amount of order exceeds the limitation                   |
 | base-symbol-trade-disabled                                   | The symbol is disabled for trading                           |
-| base-operation-forbidden                                     | The operation is forbidden for current user or the symbol is not allowed to trade over OTC |
 | account-get-accounts-inexistent-error                        | The account doesn't exist in current user                    |
 | account-account-id-inexistent                                | The account id doesn't exist                                 |
-| sub-user-auth-required                                       | Isolated margin account is not enabled for sub user          |
 | order-disabled                                               | The symbol is pending and not allowed to place order         |
 | cancel-disabled                                              | The symbol is pending and not allowed to cancel order        |
 | order-invalid-price                                          | The order price is invalid, usually exceeds the 10% of latest trade price |
@@ -3025,12 +3009,8 @@ Below is the error code and description returned by Trading APIs
 | order-date-limit-error                                       | Order query date exceed the limit                            |
 | order-source-invalid                                         | Order source is invalid                                      |
 | order-update-error                                           | Order update error                                           |
-| order-fl-cancellation-is-disallowed                          | Liquidation order cannot be canceled                         |
-| operation-forbidden-for-fl-account-state                     | The operation is forbidden when the account is in liquidation |
 | operation-forbidden-for-lock-account-state                   | The operation is forbidden when the account is locked        |
-| fl-order-already-existed                                     | An unfilled liquidation order already exists                 |
 | order-user-cancel-forbidden                                  | IOC or FOK order is not allowed to cancel                    |
-| account-state-invalid                                        | Invalid status of liquidation account                        |
 | order-price-greater-than-limit                               | Order price is higher than the limitation before market opens |
 | order-price-less-than-limit                                  | Order price is lower than the limitation before market opens |
 | order-stop-order-hit-trigger                                 | The stop orders triggered immediately are not allowed        |
@@ -3043,7 +3023,6 @@ Below is the error code and description returned by Trading APIs
 | invalid-start-time                                           | The start time is invalid                                    |
 | invalid-end-time                                             | The end time is invalid                                      |
 | validation-constraints-required                              | The specified parameters is missing                          |
-| symbol-not-support                                           | The symbol is not support for cross margin or C2C            |
 | not-found                                                    | The order id is not found                                    |
 | base-not-found                                               | The record is not found |
 
@@ -3087,11 +3066,7 @@ A: The `match-id` is the identity for order matching, while the `trade-id` is th
 ### Q6: Why the order submission could be rejected even though the order price is set as same as current best bid (or best ask)?
 A: For some extreme illiquid trading symbols, the best quote price at particular time might be far away from last trade price. But the price limit is actually based on last trade price which could possibly exclude best quote price from valid range for any new order. It is suggested to place orders based on the WebSocket pushed Bid and market data.
 
-### Q7: How to retrieve the trading symbols for margin trade
 
-A: You can get details from Rest API ` GET /v1/common/symbols`. The `leverage-ratio` represents the isolated-margin ratio. The `super-margin-leverage-ratio` represents the cross-margin.
-
-The value `0` indicates that the trading symbols doesn't support margin trading.
 
 # Conditional Order
 
@@ -3100,11 +3075,10 @@ The value `0` indicates that the trading symbols doesn't support margin trading.
 By comparing with the existing stop limit order, the newly introduced conditional order does have following major differences:<br>
 
 1)	Although the newly introduced conditional order is also triggered by stop price, before it being triggered, the Exchange will not lock order margin for this order. Only when this conditional order being successfully triggered, its order margin will be locked.<br>
-2)	Conditional order does support not only limit order type but also market order type. (Trailing stop order only supports market order type.)<br>
-3)	As advanced conditional order, trailing stop order does support additional triggering condition i.e. trailing rate. Only when latest market price breaks stop price, and continues to go up (or down), and then reverts back for a certain percentage which exceeding the pre-defined "trailing rate", this order can be triggered. The valid value range of trailing rate is between 0.1% and 5%.<br>
+2)	Conditional order does support not only limit order type but also market order type. <br>
+
 
 <aside class="notice">All endpoints in this section require authentication</aside>
-<aside class="notice">After the official launch of conditional order, Huobi Hong Kong Global might decommission the existing stop order later. This will be notified through another circular.</aside>
 
 ## Place a conditional order
 
@@ -3116,7 +3090,7 @@ Conditional order can be only placed via this endpoint instead of any endpoint i
 ### Request Parameter
 |	Field	|	Data Type	|	Mandatory	|	Default Value|	Description	|	Valid Value	|
 |	-----	|	-----	|	------	|	----	|	------	|	----	|
-|	accountId	|	integer	|	TRUE	|		|	Account ID	|At present only support spot account id, margin account id, super-margin account. C2C margin account id is not supported at this point of time.		|
+|	accountId	|	integer	|	TRUE	|		|	Account ID	|At present only support spot account id		|
 |	symbol	|	string	|	TRUE	|		|	Trading symbol	|		|
 |	orderPrice	|	string	|	FALSE	|		|	Order price (invalid for market order) 	|		|
 |	orderSide	|	string	|	TRUE	|		|	Order side	|	buy,sell	|
@@ -3759,7 +3733,7 @@ While type is set as ‘step1’, ‘step2’, ‘step3’, ‘step4’, or ‘s
 | bids    | object    | The current all bids in format [price, size]                 |
 | asks    | object    | The current all asks in format [price, size]                 |
 | version | integer   | Internal data                                                |
-| ts      | integer   | The UNIX timestamp in milliseconds adjusted to Singapore time |
+| ts      | integer   | The UNIX timestamp in milliseconds adjusted to Hong Kong time |
 
 <aside class="notice">When symbol is set to "hb10" amount, count, and vol will always have the value of 0</aside>
 ### Pull Request
@@ -4874,7 +4848,7 @@ accounts.update#1：
 | accountId   | long      | Account ID                                                   |
 | balance     | string    | Account balance (only exists when account balance changed)   |
 | available   | string    | Available balance (only exists when available balance changed) |
-| changeType  | string    | Change type, valid value: order-place,order-match,order-refund,order-cancel,order-fee-refund,margin-transfer,margin-loan,margin-interest,margin-repay,deposit,withdraw,other |
+| changeType  | string    | Change type, valid value: order-place,order-match,order-refund,order-cancel,order-fee-refund,deposit,withdraw,other |
 | accountType | string    | account type, valid value: trade, loan, interest             |
 | changeTime  | long      | Change time, unix time in millisecond                        |
 
