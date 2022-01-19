@@ -96,7 +96,7 @@ WebSocket是HTML5一種新的協議（Protocol）。它實現了客戶端與服�
 私有接口可用於交易管理和賬戶管理。每個私有請求必須使用您的API Key進行簽名驗證。
 
 ## 接入URLs
-  
+
 
 **REST API**
 
@@ -291,7 +291,7 @@ api.huobi.com.hk\n
 每個母用戶可創建200個子用戶，每個子用戶可創建20組Api Key，每個Api Key可對應設置讀取、交易兩種權限。
 
 子用戶的 API Key 也需綁定 IP 地址。
-  
+
 
 子用戶可以訪問所有公共接口，包括基本信息和市場行情，子用戶可以訪問的私有接口如下：
 
@@ -493,7 +493,7 @@ account-id則是該用戶下不同業務賬戶的ID，需要通過`GET /v1/accou
 賬戶類型包括但不限於如下賬戶：
 
 - spot 交易賬戶  
- 
+
  
 
 ### Q2：一個用戶可以申請多少個API Key？
@@ -505,7 +505,7 @@ account-id則是該用戶下不同業務賬戶的ID，需要通過`GET /v1/accou
 
 - 讀取權限：讀取權限用於對數據的查詢接口，例如：訂單查詢、成交查詢等。  
 - 交易權限：交易權限用於下單、撤單、劃轉類接口。  
- 
+
 
 ### Q3：為什麽經常出現斷線、超時的情況？
 
@@ -1366,7 +1366,7 @@ API Key 權限：讀取<br>
 | id       | true     | long     | account-id                         |                                                              |
 | state    | true     | string   | 賬戶狀態                           | working：正常, lock：賬戶被鎖定                              |
 | type     | true     | string   | 賬戶類型                           | spot：交易賬戶 |
-                               
+
 
 ## 資金賬戶余額
 
@@ -1666,37 +1666,15 @@ API Key 權限：讀取<br>
 
 ### 請求參數
 
-| 參數名稱 | 是否必須 | 類型   | 描述             | 默認值                                                       | 取值範圍                                                     |
-| -------- | -------- | ------ | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| currency | false    | string | 幣種             |                                                              | btc, ltc, bch, eth, etc ...(取值參考`GET /v1/common/currencys`) |
-| type     | true     | string | 充值或提幣       |                                                              | deposit 或 withdraw,子用戶僅可用deposit                      |
-| from     | false    | string | 查詢起始 ID      | 缺省時，默認值direct相關。當direct為『prev』時，from 為1 ，從舊到新升序返回；當direct為』next『時，from為最新的一條記錄的ID，從新到舊降序返回 |                                                              |
-| size     | false    | string | 查詢記錄大小     | 100                                                          | 1-500                                                        |
-| direct   | false    | string | 返回記錄排序方向 | 缺省時，默認為「prev」 （升序）                                | 「prev」 （升序）or 「next」 （降序）                            |
+| 參數名稱 | 是否必須 | 類型   | 描述             | 默認值                                                       | 取值範圍                                               |
+| -------- | -------- | ------ | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
+| currency | false    | string | 幣種             |                                                              | btc,  eth, etc ...(取值參考`GET /v1/common/currencys`) |
+| type     | true     | string | 充值或提幣       |                                                              | deposit 或 withdraw,子用戶僅可用deposit                |
+| from     | false    | string | 查詢起始 ID      | 缺省時，默認值direct相關。當direct為『prev』時，from 為1 ，從舊到新升序返回；當direct為』next『時，from為最新的一條記錄的ID，從新到舊降序返回 |                                                        |
+| size     | false    | string | 查詢記錄大小     | 100                                                          | 1-500                                                  |
+| direct   | false    | string | 返回記錄排序方向 | 缺省時，默認為「prev」 （升序）                              | 「prev」 （升序）or 「next」 （降序）                  |
 
-> Response:
 
-```json
-{
-  "data":
-    [
-      {
-        "id": 1171,
-        "type": "deposit",
-        "currency": "xrp",
-        "tx-hash": "ed03094b84eafbe4bc16e7ef766ee959885ee5bcb265872baaa9c64e1cf86c2b",
-        "amount": 7.457467,
-        "address": "rae93V8d2mdoUQHwBDBdM4NHCMehRJAsbm",
-        "address-tag": "100040",
-        "fee": 0,
-        "state": "safe",
-        "created-at": 1510912472199,
-        "updated-at": 1511145876575
-      },
-      ...
-    ]
-}
-```
 
 ### 響應數據
 
