@@ -98,7 +98,7 @@ In general, the domain <u>api-aws.huobi.com.hk</u> is optimized for AWS client, 
 **Websocket Feed (account and order)**
 
 **`wss://api.huobi.com.hk/ws/v2`**  
- 
+
 <aside class="notice">
 Please initiate API calls with non-China IP.
 </aside>
@@ -899,28 +899,28 @@ No parameters are needed for this endpoint.
 ```json
 "data": [  
     {  
-        "open":0.044297,
-        "close":0.042178,
-        "low":0.040110,
-        "high":0.045255,
+        "open":48000.044297,
+        "close":48000.042178,
+        "low":46000.040110,
+        "high":49000.045255,
         "amount":12880.8510,  
         "count":12838,
         "vol":563.0388715740,
-        "symbol":"ethbtc",
+        "symbol":"btcusdt",
         "bid":0.007545,
         "bidSize":0.008,
         "ask":0.008088,
         "askSize":0.009
     },
     {  
-        "open":0.008545,
-        "close":0.008656,
-        "low":0.008088,
-        "high":0.009388,
+        "open":3000.008545,
+        "close":3001.008656,
+        "low":2988.008088,
+        "high":3130.009388,
         "amount":88056.1860,
         "count":16077,
         "vol":771.7975953754,
-        "symbol":"ltcbtc",
+        "symbol":"ethusdt",
         "bid":0.007545,
         "bidSize":0.008,
         "ask":0.008088,
@@ -3817,7 +3817,7 @@ In the near future, Huobi Hong Kong Global will align the update behavior of 150
 ```
 But 5-level/20-level incremental channel won’t disseminate any update in such a case.<br>
 In the future, Huobi Hong Kong Global will align the update behavior of 150-level incremental channel with 5-level/20-level, which means while there is no order book change at all, the channel will be no longer disseminating messages of blank object any more.<br>
-5) 5-level/20-level incremental channel only supports the following symbols at this stage - btcusdt,ethusdt,xrpusdt,eosusdt,ltcusdt,etcusdt,adausdt,dashusdt,bsvusdt, while 150-level incremental channel supports all symbols.<br>
+5) 5-level/20-level incremental channel only supports the following symbols at this stage - btcusdt,ethusdt while 150-level incremental channel supports all symbols.<br>
 
 REQ channel supports refreshing message for 5-level, 20-level, and 150-level.
 
