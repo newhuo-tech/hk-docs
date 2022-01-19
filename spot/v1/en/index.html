@@ -1876,28 +1876,28 @@ All other APIs couldn't be accessed by sub user, otherwise the API will return �
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">  
     </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">0.044297</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">0.042178</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">0.040110</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">0.045255</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">48000.044297</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">48000.042178</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">46000.040110</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">49000.045255</span><span class="p">,</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">12880.8510</span><span class="p">,</span><span class="w">  
         </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">12838</span><span class="p">,</span><span class="w">
         </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">563.0388715740</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ethbtc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bid"</span><span class="p">:</span><span class="mf">0.007545</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bidSize"</span><span class="p">:</span><span class="mf">0.008</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ask"</span><span class="p">:</span><span class="mf">0.008088</span><span class="p">,</span><span class="w">
         </span><span class="s2">"askSize"</span><span class="p">:</span><span class="mf">0.009</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">0.008545</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">0.008656</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">0.008088</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">0.009388</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">3000.008545</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">3001.008656</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">2988.008088</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">3130.009388</span><span class="p">,</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">88056.1860</span><span class="p">,</span><span class="w">
         </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">16077</span><span class="p">,</span><span class="w">
         </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">771.7975953754</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ltcbtc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bid"</span><span class="p">:</span><span class="mf">0.007545</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bidSize"</span><span class="p">:</span><span class="mf">0.008</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ask"</span><span class="p">:</span><span class="mf">0.008088</span><span class="p">,</span><span class="w">
@@ -7946,7 +7946,7 @@ While type is set as ‘step1’, ‘step2’, ‘step3’, ‘step4’, or ‘s
 </span></code></pre>
 <p>But 5-level/20-level incremental channel won’t disseminate any update in such a case.<br>
 In the future, Huobi Hong Kong Global will align the update behavior of 150-level incremental channel with 5-level/20-level, which means while there is no order book change at all, the channel will be no longer disseminating messages of blank object any more.<br>
-5) 5-level/20-level incremental channel only supports the following symbols at this stage - btcusdt,ethusdt,xrpusdt,eosusdt,ltcusdt,etcusdt,adausdt,dashusdt,bsvusdt, while 150-level incremental channel supports all symbols.<br></p>
+5) 5-level/20-level incremental channel only supports the following symbols at this stage - btcusdt,ethusdt while 150-level incremental channel supports all symbols.<br></p>
 
 <p>REQ channel supports refreshing message for 5-level, 20-level, and 150-level.</p>
 <h3 id='subscribe-incremntal-updates'>Subscribe incremntal updates</h3>
