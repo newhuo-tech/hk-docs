@@ -2285,6 +2285,7 @@ This endpoint returns all open orders which have not been filled completely.
 | Field              | Data Type | Description                                                  |
 | ------------------ | --------- | ------------------------------------------------------------ |
 | id                 | integer   | Order id                                                     |
+| <data>             | object    |                                                              |
 | client-order-id    | string    | Client order id, can be returned from all open orders (if specified). |
 | symbol             | string    | The trading symbol to trade, e.g. btcusdt, bccbtc            |
 | price              | string    | The limit price of limit order                               |
@@ -2297,6 +2298,7 @@ This endpoint returns all open orders which have not been filled completely.
 | state              | string    | Order status, valid values: created, submitted, partial-filled |
 | stop-price         | string    | false                                                        |
 | operator           | string    | false                                                        |
+| </data>            |           |                                                              |
 
 ## Submit Cancel for Multiple Orders by Criteria
 
@@ -2722,14 +2724,11 @@ Rate Limit (NEW): 50times/2s
 
 This endpoint returns orders based on a specific searching criteria. The order created via API will no longer be queryable after being cancelled for more than 2 hours.
 
-
-- Upon user defined “start-time” AND/OR “end-time”, Huobi Hong Kong server will return historical orders whose order creation time falling into the period. The maximum query window between “start-time” and “end-time” is 48-hour. Oldest order searchable should be within recent 180 days. If either “start-time” or “end-time” is defined, Huobi Hong Kong server will ignore “start-date” and “end-date” regardless they were filled or not.
-
-- If user does neither define “start-time” nor “end-time”, but “start-date”/”end-date”, the order searching will be based on defined “date range”, as usual. The maximum query window is 2 days, and oldest order searchable should be within recent 180 days.
-
-- If user does not define any of “start-time”/”end-time”/”start-date”/”end-date”, by default Huobi Hong Kong server will treat current time as “end-time”, and then return historical orders within recent 48 hours.
-
-Huobi Hong Kong Global suggests API users to search historical orders based on “time” filter instead of “date”. In the near future, Huobi Hong Kong Global would remove “start-date”/”end-date” fields from the endpoint, through another notification.
+- If user does neither define  “start-time” nor ”end-time”, by default Huobi Hong Kong server will treat current time as “end-time”, and then return historical orders within [now - 48h , now].
+- If user does not define “start-time” but ”end-time”, Huobi Hong Kong server will  return historical orders within [end-time - 48h, end-time].
+- If user does not define “end-time” but ”start-time”, Huobi Hong Kong server will  return historical orders within [start-time to start-time + 48h].
+- If user does  define “start-time” and ”end-time”, Huobi Hong Kong server will  return historical orders within [start-time to end-time].
+- The maximum range of each search is 48 hours, and the data of the last 180 days can be searched continuously.
 
 
 ### HTTP Request
@@ -2759,7 +2758,7 @@ Huobi Hong Kong Global suggests API users to search historical orders based on �
 | types      | string    | false    | NA      | One or more types of order to include in the search, use comma to separate. | buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-stop-limit, sell-stop-limit, buy-limit-fok, sell-limit-fok, buy-stop-limit-fok, sell-stop-limit-fok |
 | start-time | long      | false    | -48h    | Search starts time, UTC time in millisecond                  | Value range [((end-time) – 48h), (end-time)], maximum query window size is 48 hours, query window shift should be within past 180 days, query window shift should be within past 2 hours for cancelled order (state = "canceled") |
 | end-time   | long      | false    | present | Search ends time, UTC time in millisecond                    | Value range [(present-179d), present], maximum query window size is 48 hours, query window shift should be within past 180 days, queriable range should be within past 2 hours for cancelled order (state = "canceled") |
-| states     | string    | true     | NA      | One or more  states of order to include in the search, use comma to separate. | All possible order state (refer to introduction in this section) |
+| states     | string    | true     | NA      | One or more  states of order to include in the search, use comma to separate. | within partial-canceled, filled, canceled                    |
 | from       | string    | false    | NA      | Search order id to begin with                                | NA                                                           |
 | direct     | string    | false    | both    | Search direction when 'from' is used                         | next, prev                                                   |
 | size       | integer   | false    | 100     | The number of orders to return                               | [1, 100]                                                     |
@@ -2792,6 +2791,8 @@ Huobi Hong Kong Global suggests API users to search historical orders based on �
 
 | Field              | Data Type | Description                                                  |
 | ------------------ | --------- | ------------------------------------------------------------ |
+| status             | string    |                                                              |
+| <data>             | object    |                                                              |
 | id                 | long      | Order id                                                     |
 | client-order-id    | string    | Client order id ("client-order-id" (if specified) can be returned from all open orders.	"client-order-id" (if specified) can be returned only from closed orders (state <> canceled) created within 7 days.	only those closed orders (state = canceled) created within 8 hours can be returned.) |
 | account-id         | long      | Account id                                                   |
@@ -2807,11 +2808,12 @@ Huobi Hong Kong Global suggests API users to search historical orders based on �
 | filled-cash-amount | string    | The filled total in quote currency                           |
 | filled-fees        | string    | Transaction fee (Accurate fees refer to matchresults endpoint) |
 | source             | string    | All possible order source (refer to introduction in this section) |
-| state              | string    | All possible order state (refer to introduction in this section) |
+| state              | string    | within partial-canceled, filled, canceled                    |
 | exchange           | string    | Internal data                                                |
 | batch              | string    | Internal data                                                |
 | stop-price         | string    | trigger price of stop limit order                            |
 | operator           | string    | operation character of stop price                            |
+| </data>            |           |                                                              |
 
 ### Error code for invalid start-date/end-date
 
