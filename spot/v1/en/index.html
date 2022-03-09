@@ -4685,6 +4685,11 @@ Rate Limit (NEW): 50times/2s</p>
 <td>Order id</td>
 </tr>
 <tr>
+<td><data></td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
 <td>client-order-id</td>
 <td>string</td>
 <td>Client order id, can be returned from all open orders (if specified).</td>
@@ -4743,6 +4748,11 @@ Rate Limit (NEW): 50times/2s</p>
 <td>operator</td>
 <td>string</td>
 <td>false</td>
+</tr>
+<tr>
+<td></data></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='submit-cancel-for-multiple-orders-by-criteria'>Submit Cancel for Multiple Orders by Criteria</h2>
@@ -5559,12 +5569,12 @@ Rate Limit (NEW): 50times/2s</p>
 <p>This endpoint returns orders based on a specific searching criteria. The order created via API will no longer be queryable after being cancelled for more than 2 hours.</p>
 
 <ul>
-<li><p>Upon user defined “start-time” AND/OR “end-time”, Huobi Hong Kong server will return historical orders whose order creation time falling into the period. The maximum query window between “start-time” and “end-time” is 48-hour. Oldest order searchable should be within recent 180 days. If either “start-time” or “end-time” is defined, Huobi Hong Kong server will ignore “start-date” and “end-date” regardless they were filled or not.</p></li>
-<li><p>If user does neither define “start-time” nor “end-time”, but “start-date”/”end-date”, the order searching will be based on defined “date range”, as usual. The maximum query window is 2 days, and oldest order searchable should be within recent 180 days.</p></li>
-<li><p>If user does not define any of “start-time”/”end-time”/”start-date”/”end-date”, by default Huobi Hong Kong server will treat current time as “end-time”, and then return historical orders within recent 48 hours.</p></li>
+<li>If user does neither define  “start-time” nor ”end-time”, by default Huobi Hong Kong server will treat current time as “end-time”, and then return historical orders within [now - 48h , now].</li>
+<li>If user does not define “start-time” but ”end-time”, Huobi Hong Kong server will  return historical orders within [end-time - 48h, end-time].</li>
+<li>If user does not define “end-time” but ”start-time”, Huobi Hong Kong server will  return historical orders within [start-time to start-time + 48h].</li>
+<li>If user does  define “start-time” and ”end-time”, Huobi Hong Kong server will  return historical orders within [start-time to end-time].</li>
+<li>The maximum range of each search is 48 hours, and the data of the last 180 days can be searched continuously.</li>
 </ul>
-
-<p>Huobi Hong Kong Global suggests API users to search historical orders based on “time” filter instead of “date”. In the near future, Huobi Hong Kong Global would remove “start-date”/”end-date” fields from the endpoint, through another notification.</p>
 <h3 id='http-request-37'>HTTP Request</h3>
 <p><code>GET /v1/order/orders</code></p>
 
@@ -5631,7 +5641,7 @@ Rate Limit (NEW): 50times/2s</p>
 <td>true</td>
 <td>NA</td>
 <td>One or more  states of order to include in the search, use comma to separate.</td>
-<td>All possible order state (refer to introduction in this section)</td>
+<td>within partial-canceled, filled, canceled</td>
 </tr>
 <tr>
 <td>from</td>
@@ -5689,6 +5699,16 @@ Rate Limit (NEW): 50times/2s</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><data></td>
+<td>object</td>
+<td></td>
+</tr>
 <tr>
 <td>id</td>
 <td>long</td>
@@ -5767,7 +5787,7 @@ Rate Limit (NEW): 50times/2s</p>
 <tr>
 <td>state</td>
 <td>string</td>
-<td>All possible order state (refer to introduction in this section)</td>
+<td>within partial-canceled, filled, canceled</td>
 </tr>
 <tr>
 <td>exchange</td>
@@ -5788,6 +5808,11 @@ Rate Limit (NEW): 50times/2s</p>
 <td>operator</td>
 <td>string</td>
 <td>operation character of stop price</td>
+</tr>
+<tr>
+<td></data></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='error-code-for-invalid-start-date-end-date'>Error code for invalid start-date/end-date</h3>
