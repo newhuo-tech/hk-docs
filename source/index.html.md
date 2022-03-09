@@ -2531,11 +2531,13 @@ API Key 權限：讀取<br>
 
 | 字段名稱           | 數據類型 | 描述                                                   |
 | ------------------ | -------- | ------------------------------------------------------ |
+| status             | string   |                                                        |
+| <data>             | object   |                                                        |
 | id                 | integer  | 訂單id，無大小順序，可作為下一次翻頁查詢請求的from字段 |
 | client-order-id    | string   | 用戶自編訂單號（所有open訂單可返回client-order-id）    |
 | symbol             | string   | 交易對, 例如btcusdt, ethbtc                            |
 | price              | string   | limit order的交易價格                                  |
-| created-at         | int      | 訂單創建的調整為香港時間的時間戳，單位毫秒           |
+| created-at         | int      | 訂單創建的調整為香港時間的時間戳，單位毫秒             |
 | type               | string   | 訂單類型                                               |
 | filled-amount      | string   | 訂單中已成交部分的數量                                 |
 | filled-cash-amount | string   | 訂單中已成交部分的總價格                               |
@@ -2544,6 +2546,7 @@ API Key 權限：讀取<br>
 | state              | string   | 訂單狀態，包括created, submitted, partial-filled       |
 | stop-price         | string   | 止盈止損訂單觸發價格                                   |
 | operator           | string   | 止盈止損訂單觸發價運算符                               |
+| </data>            |          |                                                        |
 
 ## 批量撤銷所有訂單
 
@@ -2900,15 +2903,11 @@ API Key 權限：讀取<br>
 
 此接口基於搜索條件查詢歷史訂單。通過API創建的訂單，撤銷超過2小時後無法查詢。
 
-用戶可選擇以「時間範圍」查詢歷史訂單，以替代原先的以「日期範圍「查詢方式。
-
--	如用戶填寫start-time AND/OR end-time查詢歷史訂單，服務器將按照用戶指定的「時間範圍「查詢並返回，並忽略start-date/end-date參數。此方式的查詢窗口大小限定為最大48小時，窗口平移範圍為最近180天。
-
--	如用戶不填寫start-time/end-time參數，而填寫start-date AND/OR end-date查詢歷史訂單，服務器將按照用戶指定的「日期範圍「查詢並返回。此方式的查詢窗口大小限定為最大2天，窗口平移範圍為最近180天。
-
--	如用戶既不填寫start-time/end-time參數，也不填寫start-date/end-date參數，服務器將缺省以當前時間為end-time，返回最近48小時內的歷史訂單。
-
-火幣香港建議用戶以「時間範圍「查詢歷史訂單。未來，火幣香港將下線以」日期範圍「查詢歷史訂單的方式，並另行通知。
+- 如用戶start-time和end-time兩個參數都沒填寫，服務器將由近到遠[now, now-48小時]內的歷史訂單。
+- 如用戶填寫start-time而沒填寫end-time參數，服務器将返回由近到遠[start-time+48小時, start-time]内的歷史訂單。
+- 如用戶沒有填寫start-time而填寫end-time參數，服務器将返回由近到遠[end-time, end-time-48小時]内的歷史訂單。
+- 如用戶start-time和end-time兩個參數都填寫了，服務器将返回由近到遠[end-time, start-time]内的歷史訂單。
+- 每次查詢範圍最大為48小時, 可連續查詢最近180天數據。
 
 
 ### HTTP 請求
@@ -2937,9 +2936,7 @@ API Key 權限：讀取<br>
 | types      | false    | string | 查詢的訂單類型組合，使用逗號分割                             |                             | 所有可能的訂單類型（見本章節簡介）                           |
 | start-time | false    | long   | 查詢開始時間, 時間格式UTC time in millisecond。 以訂單生成時間進行查詢 | -48h 查詢結束時間的前48小時 | 取值範圍 [((end-time) – 48h), (end-time)] ，查詢窗口最大為48小時，窗口平移範圍為最近180天，已完全撤銷的歷史訂單的查詢窗口平移範圍只有最近2小時(state="canceled") |
 | end-time   | false    | long   | 查詢結束時間, 時間格式UTC time in millisecond。 以訂單生成時間進行查詢 | present                     | 取值範圍 [(present-179d), present] ，查詢窗口最大為48小時，窗口平移範圍為最近180天，已完全撤銷的歷史訂單的查詢窗口平移範圍只有最近2小時(state="canceled") |
-| start-date | false    | string | 查詢開始日期, 日期格式yyyy-mm-dd。 以訂單生成時間進行查詢    | -1d 查詢結束日期的前1天     | 取值範圍 [((end-date) – 1), (end-date)] ，查詢窗口最大為2天，窗口平移範圍為最近180天，已完全撤銷的歷史訂單的查詢窗口平移範圍只有最近2小時(state="canceled") |
-| end-date   | false    | string | 查詢結束日期, 日期格式yyyy-mm-dd。 以訂單生成時間進行查詢    | today                       | 取值範圍 [(today-179), today] ，查詢窗口最大為2天，窗口平移範圍為最近180天，已完全撤銷的歷史訂單的查詢窗口平移範圍只有最近2小時(state="canceled") |
-| states     | true     | string | 查詢的訂單狀態組合，使用','分割                              |                             | 所有可能的訂單狀態（見本章節簡介）                           |
+| states     | true     | string | 查詢的訂單狀態組合，使用','分割                              |                             | filled（已成交），partial-canceled（部分成交撤銷），canceled（已撤銷） |
 | from       | false    | string | 查詢起始 ID                                                  |                             | 如果是向後查詢，則賦值為上一次查詢結果中得到的最後一條id ；如果是向前查詢，則賦值為上一次查詢結果中得到的第一條id |
 | direct     | false    | string | 查詢方向                                                     |                             | prev 向前；next 向後                                         |
 | size       | false    | string | 查詢記錄大小                                                 | 100                         | [1, 100]                                                     |
@@ -2976,6 +2973,8 @@ API Key 權限：讀取<br>
 
 | 參數名稱          | 是否必須 | 數據類型 | 描述                                                         | 取值範圍                                                     |
 | ----------------- | -------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| status | true | string | 狀態 |  |
+| <data> | true | object |  |  |
 | account-id        | true     | long     | 賬戶 ID                                                      |                                                              |
 | amount            | true     | string   | 訂單數量                                                     |                                                              |
 | canceled-at       | false    | long     | 接到撤單申請的時間                                           |                                                              |
@@ -2988,11 +2987,12 @@ API Key 權限：讀取<br>
 | client-order-id   | false    | string   | 用戶自編訂單號（所有open訂單可返回client-order-id（如有）；僅7天內（基於訂單創建時間）的closed訂單（state <> canceled）可返回client-order-id（如有）；僅8小時內（基於訂單創建時間）的closed訂單（state = canceled）可被查詢） |                                                              |
 | price   | true   | string   | 訂單價格  |        |
 | source  | true   | string   | 訂單來源  | 所有可能的訂單來源（見本章節簡介） |
-| state  | true   | string   | 訂單狀態  | 所有可能的訂單狀態（見本章節簡介） |
+| state  | true   | string   | 訂單狀態  | filled（已成交），partial-canceled（部分成交撤銷），canceled（已撤銷） |
 | symbol  | true | string  | 交易對  | btcusdt, ethbtc, rcneth ...     |
 | type   | true  | string  | 訂單類型  | 所有可能的訂單類型（見本章節簡介） |
 | stop-price  | false    | string   | 止盈止損訂單觸發價格  |   |
 | operator  | false    | string   | 止盈止損訂單觸發價運算符  | gte,lte   |
+| </data> |  |  |  |  |
 
 ### start-date, end-date相關錯誤碼
 
