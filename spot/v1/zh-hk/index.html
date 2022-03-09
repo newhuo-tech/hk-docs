@@ -5013,6 +5013,16 @@ Response:</p>
 </tr>
 </thead><tbody>
 <tr>
+<td>status</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><data></td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
 <td>id</td>
 <td>integer</td>
 <td>訂單id，無大小順序，可作為下一次翻頁查詢請求的from字段</td>
@@ -5076,6 +5086,11 @@ Response:</p>
 <td>operator</td>
 <td>string</td>
 <td>止盈止損訂單觸發價運算符</td>
+</tr>
+<tr>
+<td></data></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='22e5831edd'>批量撤銷所有訂單</h2>
@@ -5917,15 +5932,13 @@ Response:</p>
 
 <p>此接口基於搜索條件查詢歷史訂單。通過API創建的訂單，撤銷超過2小時後無法查詢。</p>
 
-<p>用戶可選擇以「時間範圍」查詢歷史訂單，以替代原先的以「日期範圍「查詢方式。</p>
-
 <ul>
-<li><p>如用戶填寫start-time AND/OR end-time查詢歷史訂單，服務器將按照用戶指定的「時間範圍「查詢並返回，並忽略start-date/end-date參數。此方式的查詢窗口大小限定為最大48小時，窗口平移範圍為最近180天。</p></li>
-<li><p>如用戶不填寫start-time/end-time參數，而填寫start-date AND/OR end-date查詢歷史訂單，服務器將按照用戶指定的「日期範圍「查詢並返回。此方式的查詢窗口大小限定為最大2天，窗口平移範圍為最近180天。</p></li>
-<li><p>如用戶既不填寫start-time/end-time參數，也不填寫start-date/end-date參數，服務器將缺省以當前時間為end-time，返回最近48小時內的歷史訂單。</p></li>
+<li>如用戶start-time和end-time兩個參數都沒填寫，服務器將由近到遠[now, now-48小時]內的歷史訂單。</li>
+<li>如用戶填寫start-time而沒填寫end-time參數，服務器将返回由近到遠[start-time+48小時, start-time]内的歷史訂單。</li>
+<li>如用戶沒有填寫start-time而填寫end-time參數，服務器将返回由近到遠[end-time, end-time-48小時]内的歷史訂單。</li>
+<li>如用戶start-time和end-time兩個參數都填寫了，服務器将返回由近到遠[end-time, start-time]内的歷史訂單。</li>
+<li>每次查詢範圍最大為48小時, 可連續查詢最近180天數據。</li>
 </ul>
-
-<p>火幣香港建議用戶以「時間範圍「查詢歷史訂單。未來，火幣香港將下線以」日期範圍「查詢歷史訂單的方式，並另行通知。</p>
 <h3 id='http-36'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/v1/order/orders</code></li>
@@ -5986,28 +5999,12 @@ Response:</p>
 <td>取值範圍 [(present-179d), present] ，查詢窗口最大為48小時，窗口平移範圍為最近180天，已完全撤銷的歷史訂單的查詢窗口平移範圍只有最近2小時(state=&quot;canceled&quot;)</td>
 </tr>
 <tr>
-<td>start-date</td>
-<td>false</td>
-<td>string</td>
-<td>查詢開始日期, 日期格式yyyy-mm-dd。 以訂單生成時間進行查詢</td>
-<td>-1d 查詢結束日期的前1天</td>
-<td>取值範圍 [((end-date) – 1), (end-date)] ，查詢窗口最大為2天，窗口平移範圍為最近180天，已完全撤銷的歷史訂單的查詢窗口平移範圍只有最近2小時(state=&quot;canceled&quot;)</td>
-</tr>
-<tr>
-<td>end-date</td>
-<td>false</td>
-<td>string</td>
-<td>查詢結束日期, 日期格式yyyy-mm-dd。 以訂單生成時間進行查詢</td>
-<td>today</td>
-<td>取值範圍 [(today-179), today] ，查詢窗口最大為2天，窗口平移範圍為最近180天，已完全撤銷的歷史訂單的查詢窗口平移範圍只有最近2小時(state=&quot;canceled&quot;)</td>
-</tr>
-<tr>
 <td>states</td>
 <td>true</td>
 <td>string</td>
 <td>查詢的訂單狀態組合，使用&#39;,&#39;分割</td>
 <td></td>
-<td>所有可能的訂單狀態（見本章節簡介）</td>
+<td>filled（已成交），partial-canceled（部分成交撤銷），canceled（已撤銷）</td>
 </tr>
 <tr>
 <td>from</td>
@@ -6070,6 +6067,20 @@ Response:</p>
 <th>取值範圍</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>status</td>
+<td>true</td>
+<td>string</td>
+<td>狀態</td>
+<td></td>
+</tr>
+<tr>
+<td><data></td>
+<td>true</td>
+<td>object</td>
+<td></td>
+<td></td>
+</tr>
 <tr>
 <td>account-id</td>
 <td>true</td>
@@ -6159,7 +6170,7 @@ Response:</p>
 <td>true</td>
 <td>string</td>
 <td>訂單狀態</td>
-<td>所有可能的訂單狀態（見本章節簡介）</td>
+<td>filled（已成交），partial-canceled（部分成交撤銷），canceled（已撤銷）</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -6188,6 +6199,13 @@ Response:</p>
 <td>string</td>
 <td>止盈止損訂單觸發價運算符</td>
 <td>gte,lte</td>
+</tr>
+<tr>
+<td></data></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='start-date-end-date'>start-date, end-date相關錯誤碼</h3>
