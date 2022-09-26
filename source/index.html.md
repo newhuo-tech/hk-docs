@@ -443,7 +443,7 @@ account-id可通過/v1/account/accounts接口獲取，並根據account-type區�
 
 **最新成交價格的獲取**
 
-- 推薦使用WebSocket的方式訂閱`market.$symbol.trade.detail`主題，該主題為逐筆成交信息推送，該數據中成交的Price即為最新成交價格，且實時性更高。
+- 推薦使用WebSocket的方式訂閱`market.$symbol.trade.detail`主題，該主題為逐筆成交信息推送，該數據中成交的Price即為最新成交價格，且實時性更高。1
 
 **盤口深度的獲取**
 
