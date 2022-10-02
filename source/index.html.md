@@ -1,8 +1,8 @@
 # Introduction
 
-Welcome to Huobi Hong Kong API！  
+Welcome to New Huo Hong Kong API！  
 
-This is the official Huobi Hong Kong API document, and will be continue updating. Huobi Hong Kong will also publish API announcement in advance for any API change. Please subscribe to our announcements so that you can get the latest updates.
+This is the official New Huo Hong Kong API document, and will be continue updating. New Huo Hong Kong will also publish API announcement in advance for any API change. Please subscribe to our announcements so that you can get the latest updates.
 
 
 **How to read this document**
@@ -14,7 +14,7 @@ Below is the content for Spot API document
 
 The first part is the overview:
 
-- **Quick Start**: It introduces the overall knowledge of Huobi Hong Kong API, and suitability for new Huobi Hong Kong API user
+- **Quick Start**: It introduces the overall knowledge of New Huo Hong Kong API, and suitability for new New Huo Hong Kong API user
 - **FAQ**: It lists the frequently asked questions regardless the specific API
 
 
@@ -29,7 +29,7 @@ The second part is detail for each API. Each API category is listed in one secti
 
 ## Preparation
 
-Before you use API, you need to login the website to create API Key with proper permissions. The API key is shared for all instruments in Huobi Hong Kong including spot, futures, swap, options.
+Before you use API, you need to login the website to create API Key with proper permissions. The API key is shared for all instruments in New Huo Hong Kong including spot, futures, swap, options.
 
 You can manage your API Keys <a href='https://www.hbg.com/zh-cn/apikey/'>here</a>.
 
@@ -50,7 +50,7 @@ The API Key can bind maximum 20 IP addresses (either host IP or network IP), we 
 
 
 ~~~~
-Warning: These two keys are important to your account safety, please don't share <b>both</b> of them together to anyone else (including any product or person from Huobi). If you find your API Key is disposed, please remove it immediately.
+Warning: These two keys are important to your account safety, please don't share <b>both</b> of them together to anyone else (including any product or person from New Huo). If you find your API Key is disposed, please remove it immediately.
 ~~~~
 
 
@@ -79,34 +79,34 @@ Public API: It is for basic information and market data. It doesn't need authent
 Private API: It is for account related operation like trading and account management. Each private API must be authenticated with API Key.
 
 ## Access URLs
-You can compare the network latency between two domain <u>api.huobi.com.hk</u> and <u>api-aws.huobi.com.hk</u>, and then choose the better one for you.
+You can compare the network latency between two domain <u>api.nhex.com.hk</u> and <u>api-aws.nhex.com.hk</u>, and then choose the better one for you.
 
-In general, the domain <u>api-aws.huobi.com.hk</u> is optimized for AWS client, the latency will be lower.
+In general, the domain <u>api-aws.nhex.com.hk</u> is optimized for AWS client, the latency will be lower.
 
 **REST API**
 
-**`https://api.huobi.com.hk`**  
+**`https://api.nhex.com.hk`**  
 
 **Websocket Feed (market data except MBP incremental)**
 
-**`wss://api.huobi.com.hk/ws`**  
+**`wss://api.nhex.com.hk/ws`**  
 
 **Websocket Feed (market data only MBP incremental)**
 
-**`wss://api.huobi.com.hk/feed`**  
+**`wss://api.nhex.com.hk/feed`**  
 
 **Websocket Feed (account and order)**
 
-**`wss://api.huobi.com.hk/ws/v2`**  
+**`wss://api.nhex.com.hk/ws/v2`**  
 
 <aside class="notice">
 Please initiate API calls with non-China IP.
 </aside>
 <aside class="notice">
-It is not recommended to use proxy to access Huobi Hong Kong API because it will introduce high latency and low stability.
+It is not recommended to use proxy to access New Huo Hong Kong API because it will introduce high latency and low stability.
 </aside>
 <aside class="notice">
-It is recommended to access Huobi Hong Kong API from AWS Hong Kong for better stability. 
+It is recommended to access New Huo Hong Kong API from AWS Hong Kong for better stability. 
 </aside> 
 
 ## Authentication
@@ -119,7 +119,7 @@ Each API Key has permission property, please check the API permission, and make 
 
 A valid request consists of below parts:
 
-- API Path: for example <u>api.huobi.com.hk/v1/order/orders</u>
+- API Path: for example <u>api.nhex.com.hk/v1/order/orders</u>
 - API Access Key: The 'Access Key' in your API Key
 - Signature Method: The Hash method that is used to sign, it uses **HmacSHA256**
 - Signature Version: The version for the signature protocol, it uses **2**
@@ -135,7 +135,7 @@ The signature may be different if the request text is different, therefore the r
 
 This is a full URL to query one order:
 
-`https://api.huobi.com.hk/v1/order/orders?`
+`https://api.nhex.com.hk/v1/order/orders?`
 
 `AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx`
 
@@ -155,7 +155,7 @@ This is a full URL to query one order:
 
 Example:
 `
-api.huobi.com.hk
+api.nhex.com.hk
 `
 
 **3. The path, append line break “\n”**
@@ -215,7 +215,7 @@ Then above parameter should be ordered like below:
 
 `GET`
 
-`api.huobi.com.hk`
+`api.nhex.com.hk`
 
 `/v1/order/orders`
 
@@ -238,7 +238,7 @@ For Rest interface:
 
 Finally, the request sent to API should be:
 
-`https://api.huobi.com.hk/v1/order/orders?AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&order-id=1234567890&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2021-05-11T15%3A19%3A30&Signature=4F65x5A2bLyMWVQj3Aqp%2BB4w%2BivaA7n5Oi2SuYtCJ9o%3D`
+`https://api.nhex.com.hk/v1/order/orders?AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&order-id=1234567890&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2021-05-11T15%3A19%3A30&Signature=4F65x5A2bLyMWVQj3Aqp%2BB4w%2BivaA7n5Oi2SuYtCJ9o%3D`
 
 
 
@@ -459,7 +459,7 @@ Below are the explanation for permissions:
 
 Please follow below suggestions:
 
-1. It is suggested to invoke API only to host <u>api.huobi.com.hk</u>
+1. It is suggested to invoke API only to host <u>api.nhex.com.hk</u>
 
 ### Q4：Why the WebSocket is often disconnected?
 
@@ -518,7 +518,7 @@ They should be ordered like below:
 
 The proxy may change the request host, you can try without proxy;
 
-Some http/websocket library may include port in the host, you can try to append port in signature host, like "api.huobi.com.hk:443"
+Some http/websocket library may include port in the host, you can try to append port in signature host, like "api.nhex.com.hk:443"
 
 
 ### Q6：Why the API return 'Incorrect Access Key'?
@@ -558,7 +558,7 @@ Reference data APIs provide public reference information such as system status, 
 
 ## Get all Supported Trading Symbol
 
-This endpoint returns all Huobi Hong Kong's supported tradable symbols.
+This endpoint returns all New Huo Hong Kong's supported tradable symbols.
 
 ### HTTP Request
 
@@ -595,7 +595,7 @@ No parameter is needed for this endpoint.
 
 ## Get all Supported Currencies
 
-This endpoint returns all Huobi Hong Kong's supported tradable currencies.
+This endpoint returns all New Huo Hong Kong's supported tradable currencies.
 
 
 ### HTTP Request
@@ -633,7 +633,7 @@ API user could query static reference information for each currency, as well as 
 
 | Field Name     | Mandatory | Data Type | Description     | Value Range                                                  |
 | -------------- | --------- | --------- | --------------- | ------------------------------------------------------------ |
-| currency       | false     | string    | Currency        | btc, ltc, bch, eth, etc ...(available currencies in Huobi Hong Kong Global) |
+| currency       | false     | string    | Currency        | btc, ltc, bch, eth, etc ...(available currencies in New Huo Hong Kong Global) |
 | authorizedUser | false     | boolean   | Authorized user | true or false (if not filled, default value is true)         |
 
 > Response:
@@ -1475,7 +1475,7 @@ This endpoint allows parent user to query withdraw address available for API key
         {
             "currency": "usdt",
             "chain": "usdt",
-            "note": "huobi",
+            "note": "newhuo",
             "addressTag": "",
             "address": "15PrEcqTJRn4haLeby3gJJebtyf4KgWmSd"
         }
@@ -1497,9 +1497,9 @@ This endpoint allows parent user to query withdraw address available for API key
 | nextId     | false     | long      | First record ID in next page (only valid if exceeded page size) |             |
 
 Note:<br>
-Only when the number of items within the query window exceeded the page limitation (defined by “limit”), Huobi Hong Kong server returns “nextId”. Once received “nextId”, API user should –<br>
+Only when the number of items within the query window exceeded the page limitation (defined by “limit”), New Huo Hong Kong server returns “nextId”. Once received “nextId”, API user should –<br>
 1) Be aware of that, some items within the query window were not returned due to the page size limitation.<br>
-2) In order to get these items from Huobi Hong Kong server, adopt the “nextId” as “fromId” and submit another request, with other request parameters no change.<br>
+2) In order to get these items from New Huo Hong Kong server, adopt the “nextId” as “fromId” and submit another request, with other request parameters no change.<br>
 3) “nextId” and “fromId” are for recurring query purpose and the ID itself does not have any business implication.<br>
 
 
@@ -2724,10 +2724,10 @@ Rate Limit (NEW): 50times/2s
 
 This endpoint returns orders based on a specific searching criteria. The order created via API will no longer be queryable after being cancelled for more than 2 hours.
 
-- If user does neither define  “start-time” nor ”end-time”, by default Huobi Hong Kong server will treat current time as “end-time”, and then return historical orders within [now - 48h , now].
-- If user does not define “start-time” but ”end-time”, Huobi Hong Kong server will  return historical orders within [end-time - 48h, end-time].
-- If user does not define “end-time” but ”start-time”, Huobi Hong Kong server will  return historical orders within [start-time to start-time + 48h].
-- If user does  define “start-time” and ”end-time”, Huobi Hong Kong server will  return historical orders within [start-time to end-time].
+- If user does neither define  “start-time” nor ”end-time”, by default New Huo Hong Kong server will treat current time as “end-time”, and then return historical orders within [now - 48h , now].
+- If user does not define “start-time” but ”end-time”, New Huo Hong Kong server will  return historical orders within [end-time - 48h, end-time].
+- If user does not define “end-time” but ”start-time”, New Huo Hong Kong server will  return historical orders within [start-time to start-time + 48h].
+- If user does  define “start-time” and ”end-time”, New Huo Hong Kong server will  return historical orders within [start-time to end-time].
 - The maximum range of each search is 48 hours, and the data of the last 180 days can be searched continuously.
 
 
@@ -3404,12 +3404,12 @@ Below is the error code and the description returned by Conditional Order APIs
 
 **Websocket Market Feed (excluding MBP incremental channel & its REQ channel)**
 
-**`wss://api.huobi.com.hk/ws`**
+**`wss://api.nhex.com.hk/ws`**
 
 
 **MBP incremental channel & its REQ channel)**
 
-**`wss://api.huobi.com.hk/feed`**
+**`wss://api.nhex.com.hk/feed`**
 
 
 ### Data Format
@@ -3421,7 +3421,7 @@ All return data of websocket Market APIs are compressed with GZIP so they need t
 ```json
 {"ping": 1492420473027} 
 ```
-After connected to Huobi Hong Kong's Websocket server, the server will send heartbeat periodically (currently at 5s interval). The heartbeat message will have an integer in it, e.g.
+After connected to New Huo Hong Kong's Websocket server, the server will send heartbeat periodically (currently at 5s interval). The heartbeat message will have an integer in it, e.g.
 
 ```json
 {"pong": 1492420473027} 
@@ -3755,7 +3755,7 @@ User could subscribe to this channel to receive incremental update of Market By 
 
 **MBP incremental channel & its REQ channel)**
 
-**`wss://api.huobi.com.hk/feed`**
+**`wss://api.nhex.com.hk/feed`**
 
 
 Suggested downstream data processing:<br>
@@ -3768,7 +3768,7 @@ Suggested downstream data processing:<br>
 7)	Once received a “size=0” at existing price level from incremental message, that price level should be removed from MBP book;<br>
 8)	If one incremental message includes updates of multiple price levels, all of those levels should be updated simultaneously in MBP book.<br>
 
-Currently Huobi Hong Kong Global only supports 5-level/20-level MBP incremental channel and 150-level incremental channel, the differences between them are -<br>
+Currently New Huo Hong Kong Global only supports 5-level/20-level MBP incremental channel and 150-level incremental channel, the differences between them are -<br>
 1) Different depth of market.<br>
 2) 5-level/20-level incremental MBP is a tick by tick feed, which means whenever there is an order book change at that level, it pushes an update; 150 levels incremental MBP feed is based on the gap between two snapshots at 100ms interval.<br>
 3) While there is single side order book update, either bid or ask, the incremental message sent from 5-level/20-level MBP feed only contains that side update. <br>
@@ -3802,7 +3802,7 @@ But the incremental message from 150 levels MBP feed contains not only that side
     }
 }
 ```
-In the near future, Huobi Hong Kong Global will align the update behavior of 150-level incremental channel with 5-level/20-level, which means while single side order book changed (either bid or ask), the update message will be no longer including a blank object for another side.<br>
+In the near future, New Huo Hong Kong Global will align the update behavior of 150-level incremental channel with 5-level/20-level, which means while single side order book changed (either bid or ask), the update message will be no longer including a blank object for another side.<br>
 4) While there is nothing change between two snapshots in past 100ms, the 150 levels incremental MBP feed still sends out a message which contains two blank objects – bids & asks. <br>
 
 ```json
@@ -3818,7 +3818,7 @@ In the near future, Huobi Hong Kong Global will align the update behavior of 150
 }
 ```
 But 5-level/20-level incremental channel won’t disseminate any update in such a case.<br>
-In the future, Huobi Hong Kong Global will align the update behavior of 150-level incremental channel with 5-level/20-level, which means while there is no order book change at all, the channel will be no longer disseminating messages of blank object any more.<br>
+In the future, New Huo Hong Kong Global will align the update behavior of 150-level incremental channel with 5-level/20-level, which means while there is no order book change at all, the channel will be no longer disseminating messages of blank object any more.<br>
 5) 5-level/20-level incremental channel only supports the following symbols at this stage - btcusdt,ethusdt while 150-level incremental channel supports all symbols.<br>
 
 REQ channel supports refreshing message for 5-level, 20-level, and 150-level.
@@ -4223,7 +4223,7 @@ Below is the error code, error message and description returned by Market WebSoc
 
 **Websocket Asset and Order**
 
-**`wss://api.huobi.com.hk/ws/v2`**  
+**`wss://api.nhex.com.hk/ws/v2`**  
 
 
 ### Message Compression
@@ -4241,7 +4241,7 @@ Unlike Market WebSocket, the return data of Account and Order Websocket are not 
 }
 ```
 
-Once the Websocket connection is established, Huobi Hong Kong server will periodically send "ping" message at 20s interval, with an integer inside.
+Once the Websocket connection is established, New Huo Hong Kong server will periodically send "ping" message at 20s interval, with an integer inside.
 
 ```json
 {
@@ -4261,7 +4261,7 @@ Once client receives "ping", it should respond "pong" message back with the same
 | sub          | Subscribe                                   |
 | req          | Request                                     |
 | ping,pong    | Heartbeat                                   |
-| push         | Push (from Huobi Hong Kong server to client's server) |
+| push         | Push (from New Huo Hong Kong server to client's server) |
 
 ### Rate Limit
 
@@ -4324,7 +4324,7 @@ The signature generation method of Account and Order WebSocket is similar with R
 
 ```
 GET\n
-api.huobi.com.hk\n
+api.nhex.com.hk\n
 /ws/v2\n
 accessKey=0664b695-rfhfg2mkl3-abbf6c5d-49810&signatureMethod=HmacSHA256&signatureVersion=2.1&timestamp=2019-12-05T11%3A53%3A03
 ```
