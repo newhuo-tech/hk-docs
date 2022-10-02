@@ -57,32 +57,32 @@ under the License.
             <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
             <ul class="nav_ul">
               <li>
-                <a href="/docs/spot/v1/en/" id="v1_url">v1</a>
+                <a href="/spot/v1/en/" id="v1_url">v1</a>
               </li>
             </ul>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="/docs/spot/v1/en/" id="btn_spot">现货</a>
+            <a href="/spot/v1/en/" id="btn_spot">现货</a>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="/docs/dm/v1/en/" id="btn_dm">交割合约</a>
+            <a href="/dm/v1/en/" id="btn_dm">交割合约</a>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="/docs/coin_margined_swap/v1/en/" id="btn_coin_margined_swap">币本位永续合约</a>
+            <a href="/coin_margined_swap/v1/en/" id="btn_coin_margined_swap">币本位永续合约</a>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="/docs/usdt_swap/v1/en/" id="btn_usdt_swap">USDT本位永续合约</a>
+            <a href="/usdt_swap/v1/en/" id="btn_usdt_swap">USDT本位永续合约</a>
           </span>
           <!--
           <span class="nav_cell nav_tab">
-            <a href="/docs/option/v1/en/" id="btn_option">期权合约</a>
+            <a href="/option/v1/en/" id="btn_option">期权合约</a>
           </span>
            <span class="nav_cell nav_tab">
-            <a href="/docs/swap/v1/en/" id="btn_swap">永续合约</a>
+            <a href="/swap/v1/en/" id="btn_swap">永续合约</a>
           </span> -->
         </div>
       </div>
-      <a href="/docs/spot/v1/cn/" class="lang" id="lang_box">简体中文</a>
+      <a href="/spot/v1/cn/" class="lang" id="lang_box">简体中文</a>
     </header>
     <div class="toc-wrapper">
       <% if language_tabs.any? %>
@@ -169,7 +169,7 @@ under the License.
         btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('en/', 'cn/');
         btn_usdt_swap.href = btn_usdt_swap.href.replace('en/', 'cn/');
       //  btn_option.href = btn_option.href.replace('en/', 'cn/');
-        v1_url.href = '/docs/spot/v1/cn/';
+        v1_url.href = '/spot/v1/cn/';
       }else{
         //如果是英文环境
         lang_btn.innerHTML = '中文';
@@ -186,7 +186,7 @@ under the License.
         btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('cn/', 'en/');
         btn_usdt_swap.href = btn_usdt_swap.href.replace('cn/', 'en/');
       //  btn_option.href = btn_option.href.replace('cn/', 'en/');
-        v1_url.href = '/docs/spot/v1/en/';
+        v1_url.href = '/spot/v1/en/';
       }
 
       if(location.href.indexOf('docs/dm/v') > 0){
