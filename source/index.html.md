@@ -31,7 +31,7 @@ The second part is detail for each API. Each API category is listed in one secti
 
 Before you use API, you need to login the website to create API Key with proper permissions. The API key is shared for all instruments in New Huo Hong Kong including spot, futures, swap, options.
 
-You can manage your API Keys <a href='https://www.hbg.com/zh-cn/apikey/'>here</a>.
+You can manage your API Keys <a href='HTTPS://WWW.nhex.COM.HK/en-us/user/api/'>here</a>.
 
 Every user can create at most 20 API Keys, each can be applied with either permission below:
 
