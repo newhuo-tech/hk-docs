@@ -6,7 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
-    <title>火幣香港 API 文檔</title>
+    <title>新火香港 API 文檔</title>
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -209,7 +209,7 @@
     </a>
     <header>
       <div class="flex_box">
-        <img src="images/logo.svg" class="logo" alt="Logo" />
+        <img src="images/logo-new.svg" class="logo" alt="Logo new" />
         <div class="nav_box">
           <span class="nav_cell" style="display: none">
             <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
@@ -577,16 +577,16 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='HTTPS://WWW.HUOBI.COM.HK/zh-hk/user/api/'>創建 API Key </a></li>
+            <li><a href='HTTPS://WWW.nhex.COM.HK/zh-hk/user/api/'>創建 API Key </a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='82fb364030'>簡介</h1>
-<p>歡迎使用火幣香港 API！  </p>
+<p>歡迎使用新火香港 API！  </p>
 
-<p>此文檔是火幣香港API的唯一官方文檔，火幣香港API提供的功能和服務會在此文檔持續更新，並會發布公告進行通知，建議您關註和訂閱我們的公告，及時獲取相關信息。</p>
+<p>此文檔是新火香港API的唯一官方文檔，新火香港API提供的功能和服務會在此文檔持續更新，並會發布公告進行通知，建議您關註和訂閱我們的公告，及時獲取相關信息。</p>
 
 <p><strong>如何閱讀本文檔</strong></p>
 
@@ -597,8 +597,8 @@
 <p>第一部分是概要介紹：</p>
 
 <ul>
-<li><strong>快速入門</strong>：該章節對火幣香港API做了簡單且全方位的介紹，適合第一次使用火幣API的用戶。</li>
-<li><strong>常見問題</strong>：該章節列舉了使用火幣香港API時常見的、和具體API無關的通用問題。</li>
+<li><strong>快速入門</strong>：該章節對新火香港API做了簡單且全方位的介紹，適合第一次使用新火API的用戶。</li>
+<li><strong>常見問題</strong>：該章節列舉了使用新火香港API時常見的、和具體API無關的通用問題。</li>
 </ul>
 
 <p>第二部分是每個接口類的詳細介紹，每個接口類一個章節，每個章節分為如下內容：</p>
@@ -612,7 +612,7 @@
 <h1 id='1bed0372b9'>快速入門</h1><h2 id='eafcd32414'>接入準備</h2>
 <p>如需使用API ，請先登錄網頁端，完成API key的申請和權限配置，再據此文檔詳情進行開發和交易。  </p>
 
-<p>您可以點擊 <a href='HTTPS://WWW.HUOBI.COM.HK/zh-hk/user/api/'>這裏 </a> 創建 API Key。</p>
+<p>您可以點擊 <a href='HTTPS://WWW.nhex.COM.HK/zh-hk/user/api/'>這裏 </a> 創建 API Key。</p>
 
 <p>每個母用戶可創建20組Api Key，每個Api Key可對應設置讀取、交易兩種權限。  </p>
 
@@ -638,7 +638,7 @@
 <red><b>風險提示</b></red>：這兩個密鑰與賬號安全緊密相關，無論何時都請勿將二者<b>同時</b>向其它人透露。API Key的泄露可能會造成您的資產損失（即使未開通提幣權限），若發現API Key泄露請盡快刪除該API Key。
 </aside> 
 <h2 id='1174085f5c'>接口類型</h2>
-<p>火幣香港為用戶提供兩種接口，您可根據自己的使用場景和偏好來選擇適合的方式進行查詢行情、交易。  </p>
+<p>新火香港為用戶提供兩種接口，您可根據自己的使用場景和偏好來選擇適合的方式進行查詢行情、交易。  </p>
 <h3 id='rest-api'>REST API</h3>
 <p>REST，即Representational State Transfer的縮寫，是目前較為流行的基於HTTP的一種通信機製，每一個URL代表一種資源。</p>
 
@@ -658,23 +658,23 @@
 <h2 id='urls'>接入URLs</h2>
 <p><strong>REST API</strong></p>
 
-<p><strong><code>https://api.huobi.com.hk</code></strong>  </p>
+<p><strong><code>https://api.nhex.com.hk</code></strong>  </p>
 
 <p><strong>Websocket Feed（行情，不包含MBP增量行情）</strong></p>
 
-<p><strong><code>wss://api.huobi.com.hk/ws</code></strong>  </p>
+<p><strong><code>wss://api.nhex.com.hk/ws</code></strong>  </p>
 
 <p><strong>Websocket Feed（行情，僅MBP增量行情）</strong></p>
 
-<p><strong><code>wss://api.huobi.com.hk/feed</code></strong>  </p>
+<p><strong><code>wss://api.nhex.com.hk/feed</code></strong>  </p>
 
 <p><strong>Websocket Feed（資產和訂單）</strong></p>
 
-<p><strong><code>wss://api.huobi.com.hk/ws/v2</code></strong>  </p>
+<p><strong><code>wss://api.nhex.com.hk/ws/v2</code></strong>  </p>
 
 <p></aside>
 <aside class="notice">
-鑒於延遲高和穩定性差等原因，不建議通過代理的方式訪問火幣香港API。
+鑒於延遲高和穩定性差等原因，不建議通過代理的方式訪問新火香港API。
 </aside>
 <aside class="notice">
 為保證API服務的穩定性，建議使用香港AWS雲服務器進行訪問。
@@ -704,7 +704,7 @@
 
 <p>查詢某訂單詳情時完整的請求URL</p>
 
-<p><code>https://api.huobi.com.hk/v1/order/orders?</code></p>
+<p><code>https://api.nhex.com.hk/v1/order/orders?</code></p>
 
 <p><code>AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx</code></p>
 
@@ -725,7 +725,7 @@
 
 <p>例如：
 <code>
-api.huobi.com.hk\n
+api.nhex.com.hk\n
 </code></p>
 
 <p><strong>3. 訪問方法的路徑，後面添加換行符 「\n」</strong></p>
@@ -782,7 +782,7 @@ api.huobi.com.hk\n
 
 <p><code>GET\n</code></p>
 
-<p><code>api.huobi.com.hk\n</code></p>
+<p><code>api.nhex.com.hk\n</code></p>
 
 <p><code>/v1/order/orders\n</code></p>
 
@@ -808,7 +808,7 @@ api.huobi.com.hk\n
 
 <p>最終，發送到服務器的 API 請求應該為</p>
 
-<p><code>https://api.huobi.com.hk/v1/order/orders?AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;order-id=1234567890&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2017-05-11T15%3A19%3A30&amp;Signature=4F65x5A2bLyMWVQj3Aqp%2BB4w%2BivaA7n5Oi2SuYtCJ9o%3D</code></p>
+<p><code>https://api.nhex.com.hk/v1/order/orders?AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;order-id=1234567890&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2017-05-11T15%3A19%3A30&amp;Signature=4F65x5A2bLyMWVQj3Aqp%2BB4w%2BivaA7n5Oi2SuYtCJ9o%3D</code></p>
 
 <p>對於WebSocket接口：</p>
 
@@ -1213,7 +1213,7 @@ api.huobi.com.hk\n
 
 <p>如果您使用了代理，代理可能會改變請求Host，可以嘗試去掉代理；</p>
 
-<p>或者，您使用的網絡連接庫可能會把端口包含在Host內，可以嘗試在簽名用到的Host中包含端口，如「api.huobi.com.hk:443&quot;</p>
+<p>或者，您使用的網絡連接庫可能會把端口包含在Host內，可以嘗試在簽名用到的Host中包含端口，如「api.nhex.com.hk:443&quot;</p>
 <h3 id='q6-incorrect-access-key'>Q6：調用接口返回Incorrect Access Key 錯誤是什麽原因？</h3>
 <p>請檢查URL請求中Access Key是否傳遞準確，例如：</p>
 
@@ -1243,8 +1243,8 @@ api.huobi.com.hk\n
 <h1 id='634e7ca1aa'>基礎信息</h1><h2 id='82fb364030-2'>簡介</h2>
 <p>基礎信息Rest接口提供了系統狀態、市場狀態、交易對信息、幣種信息、幣鏈信息、服務器時間戳等公共參考信息。</p>
 <h2 id='8323c84c06'>獲取所有交易對</h2>
-<p>此接口返回所有火幣香港站支持的交易對。</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/v1/common/symbols"</span>
+<p>此接口返回所有新火香港站支持的交易對。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/v1/common/symbols"</span>
 </code></pre><h3 id='http'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/v1/common/symbols</code></li>
@@ -1396,8 +1396,8 @@ api.huobi.com.hk\n
 </tr>
 </tbody></table>
 <h2 id='b019443069'>獲取所有幣種</h2>
-<p>此接口返回所有火幣香港支持的幣種。</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/v1/common/currencys"</span>
+<p>此接口返回所有新火香港支持的幣種。</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/v1/common/currencys"</span>
 </code></pre><h3 id='http-2'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/v1/common/currencys</code></li>
@@ -1421,7 +1421,7 @@ api.huobi.com.hk\n
 <ul>
 <li>GET <code>/v2/reference/currencies</code></li>
 </ul>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/v2/reference/currencies?currency=usdt"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/v2/reference/currencies?currency=usdt"</span>
 </code></pre><h3 id='ba05bab92e-3'>請求參數</h3>
 <table><thead>
 <tr>
@@ -1750,7 +1750,7 @@ api.huobi.com.hk\n
 </tbody></table>
 <h2 id='4e824ee8e9'>獲取當前系統時間戳</h2>
 <p>此接口返回當前的系統時間戳，即從 <strong>UTC</strong> 1970年1月1日0時0分0秒0毫秒到現在的總<strong>毫秒</strong>數。</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/v1/common/timestamp"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/v1/common/timestamp"</span>
 </code></pre><h3 id='http-4'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/v1/common/timestamp</code></li>
@@ -1772,7 +1772,7 @@ api.huobi.com.hk\n
 <aside class="notice">當前 REST API 不支持自定義時間區間，如需要歷史固定時間範圍的數據，請參考 Websocket API 中的 K 線接口。</aside>
 
 <aside class="notice">獲取 hb10 凈值時， symbol 請填寫 「hb10」。</aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/market/history/kline?period=1day&amp;size=200&amp;symbol=btcusdt"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/market/history/kline?period=1day&amp;size=200&amp;symbol=btcusdt"</span>
 </code></pre><h3 id='http-5'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/market/history/kline</code></li>
@@ -1880,7 +1880,7 @@ api.huobi.com.hk\n
 </tbody></table>
 <h2 id='ticker'>聚合行情（Ticker）</h2>
 <p>此接口獲取ticker信息同時提供最近24小時的交易聚合信息。</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/market/detail/merged?symbol=ethusdt"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/market/detail/merged?symbol=ethusdt"</span>
 </code></pre><h3 id='http-6'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/market/detail/merged</code></li>
@@ -1984,7 +1984,7 @@ api.huobi.com.hk\n
 <h2 id='tickers'>所有交易對的最新 Tickers</h2>
 <p>獲得所有交易對的 tickers。
 <code>shell
-curl &quot;https://api.huobi.com.hk/market/tickers&quot;
+curl &quot;https://api.nhex.com.hk/market/tickers&quot;
 </code>
 <aside class="notice">此接口返回所有交易對的 ticker，因此數據量較大。</aside></p>
 <h3 id='http-7'>HTTP 請求</h3>
@@ -2100,7 +2100,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 </tbody></table>
 <h2 id='30dc36322b'>市場深度數據</h2>
 <p>此接口返回指定交易對的當前市場深度數據。</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/market/depth?symbol=btcusdt&amp;type=step2"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/market/depth?symbol=btcusdt&amp;type=step2"</span>
 </code></pre><h3 id='http-8'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/market/depth</code></li>
@@ -2238,7 +2238,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 </tbody></table>
 <h2 id='c1e310b412'>最近市場成交記錄</h2>
 <p>此接口返回指定交易對最新的一個交易記錄。</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/market/trade?symbol=ethusdt"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/market/trade?symbol=ethusdt"</span>
 </code></pre><h3 id='http-9'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/market/trade</code></li>
@@ -2322,7 +2322,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 </tbody></table>
 <h2 id='29402aab61'>獲得近期交易記錄</h2>
 <p>此接口返回指定交易對近期的所有交易記錄。</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/market/history/trade?symbol=ethusdt&amp;size=2"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/market/history/trade?symbol=ethusdt&amp;size=2"</span>
 </code></pre><h3 id='http-10'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/market/history/trade</code></li>
@@ -2439,7 +2439,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <p>此接口返回最近24小時的行情數據匯總。</p>
 
 <aside class="notice">此接口返回的成交量、成交金額為24小時滾動數據（平移窗口大小24小時），有可能會出現後一個窗口內的累計成交量、累計成交額小於前一窗口的情況。</aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/market/detail?symbol=ethusdt"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/market/detail?symbol=ethusdt"</span>
 </code></pre><h3 id='http-11'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/market/detail</code></li>
@@ -2998,7 +2998,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 限頻值（NEW）：20次/2s</p>
 
 <aside class="notice"> 充幣地址查詢暫不支持IOTA幣 </aside>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/v2/account/deposit/address?currency=btc"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/v2/account/deposit/address?currency=btc"</span>
 </code></pre><h3 id='http-16'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/v2/account/deposit/address</code></li>
@@ -3566,7 +3566,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 
 <aside class="notice">訪問子用戶管理的相關接口需要進行簽名認證。</aside>
 <h2 id='3828a6924f'>獲取子用戶列表</h2>
-<p>母用戶通過此接口可獲取所有子用戶的UID列表及各用戶狀態</p>
+<p>母用戶通過此接口可獲取所有子用戶的UID列表及各用戶狀態.1</p>
 
 <p>API Key 權限：讀取</p>
 <h3 id='http-19'>HTTP 請求</h3>
@@ -4307,7 +4307,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <p>API Key 權限：交易
 限頻值；100次/2s</p>
 
-<p>發送一個新訂單到火幣以進行撮合。</p>
+<p>發送一個新訂單到新火以進行撮合。</p>
 <h3 id='http-25'>HTTP 請求</h3>
 <ul>
 <li>POST <code>/v1/order/orders/place</code></li>
@@ -4795,7 +4795,7 @@ curl &quot;https://api.huobi.com.hk/market/tickers&quot;
 <h2 id='bace0d0441'>自動撤銷訂單</h2>
 <p>API Key 權限：交易<br></p>
 
-<p>為了防止API用戶在發生網絡故障或用戶端系統故障與火幣系統失去聯系時，給用戶造成意外損失，火幣新增自動撤單接口，當用戶與火幣發生意外斷連時，能自動幫用戶取消全部委托單，以避免損失，即提供Dead man&#39;s switch功能。若開啟，在設定的時間數完前，接口沒有被再次調用，則用戶所有現貨委托單將被取消（最大支持撤500單）。</p>
+<p>為了防止API用戶在發生網絡故障或用戶端系統故障與新火系統失去聯系時，給用戶造成意外損失，新火新增自動撤單接口，當用戶與新火發生意外斷連時，能自動幫用戶取消全部委托單，以避免損失，即提供Dead man&#39;s switch功能。若開啟，在設定的時間數完前，接口沒有被再次調用，則用戶所有現貨委托單將被取消（最大支持撤500單）。</p>
 <h3 id='http-29'>HTTP 請求</h3>
 <ul>
 <li>POST <code>/v2/algo-orders/cancel-all-after</code></li>
@@ -6495,7 +6495,7 @@ Response:</p>
 <p>Api用戶查詢交易對費率，一次限製最多查10個交易對，子用戶的費率和母用戶保持一致</p>
 
 <p>API Key 權限：讀取</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.com.hk/v2/reference/transact-fee-rate?symbols=btcusdt,ethusdt,ltcusdt"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.nhex.com.hk/v2/reference/transact-fee-rate?symbols=btcusdt,ethusdt,ltcusdt"</span>
 </code></pre><h3 id='http-38'>HTTP 請求</h3>
 <ul>
 <li>GET <code>/v2/reference/transact-fee-rate</code></li>
@@ -6874,7 +6874,7 @@ Response:</p>
 <h3 id='q5-match-id-trade-id'>Q5: 成交明細中match-id和trade-id有什麽區別？</h3>
 <p>A: match-id表示訂單在撮合中的順序號，trade-id表示成交時的序號， 一個match-id可能有多個trade-id（成交時），也可能沒有trade-id(創建訂單、撤銷訂單)</p>
 <h3 id='q6'>Q6: 為什麽基於當前盤口買一或者賣一價格進行下單觸發了下單限價錯誤？</h3>
-<p>A: 當前火幣有基於最新成交價上下一定幅度的限價保護，對流動性不好的幣，基於盤口數據下單可能會觸發限價保護。建議基於ws推送的成交價+盤口數據信息進行下單</p>
+<p>A: 當前新火有基於最新成交價上下一定幅度的限價保護，對流動性不好的幣，基於盤口數據下單可能會觸發限價保護。建議基於ws推送的成交價+盤口數據信息進行下單</p>
 <h1 id='60bd10ac69'>策略委托</h1><h2 id='82fb364030-8'>簡介</h2>
 <p>策略委托，目前僅包括計劃委托。 –<br>特別說明，如遇行情或其他極端情況，策略委托單可能會延遲觸發。</p>
 
@@ -7888,16 +7888,16 @@ API Key 權限：讀取<br>
 <h1 id='websocket'>Websocket行情數據</h1><h2 id='82fb364030-9'>簡介</h2><h3 id='url'>接入URL</h3>
 <p><strong>香港站行情請求地址（除MBP增量推送及MBP全量REQ以外Websocket行情頻道）</strong></p>
 
-<p><strong><code>wss://api.huobi.com.hk/ws</code></strong>  </p>
+<p><strong><code>wss://api.nhex.com.hk/ws</code></strong>  </p>
 
 <p><strong>MBP增量推送及MBP全量REQ請求地址</strong></p>
 
-<p><strong><code>wss://api.huobi.com.hk/feed</code></strong>  </p>
+<p><strong><code>wss://api.nhex.com.hk/feed</code></strong>  </p>
 <h3 id='049ceff479'>數據壓縮</h3>
 <p>WebSocket 行情接口返回的所有數據都進行了 GZIP 壓縮，需要 client 在收到數據之後解壓。</p>
 <h3 id='1853724646'>心跳消息</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"ping"</span><span class="p">:</span><span class="w"> </span><span class="mi">1492420473027</span><span class="p">}</span><span class="w"> 
 </span></code></pre>
-<p>當用戶的Websocket客戶端連接到火幣Websocket服務器後，服務器會定期（當前設為5秒）向其發送<code>ping</code>消息並包含一整數值。</p>
+<p>當用戶的Websocket客戶端連接到新火Websocket服務器後，服務器會定期（當前設為5秒）向其發送<code>ping</code>消息並包含一整數值。</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="s2">"pong"</span><span class="p">:</span><span class="w"> </span><span class="mi">1492420473027</span><span class="p">}</span><span class="w"> 
 </span></code></pre>
 <p>當用戶的Websocket客戶端接收到此心跳消息後，應返回<code>pong</code>消息並包含同一整數值。</p>
@@ -8384,7 +8384,7 @@ API Key 權限：讀取<br>
 
 <p><strong>MBP增量推送及MBP全量REQ請求地址</strong></p>
 
-<p><strong><code>wss://api.huobi.com.hk/feed</code></strong>  </p>
+<p><strong><code>wss://api.nhex.com.hk/feed</code></strong>  </p>
 
 <p>建議下遊數據處理方式：<br>
 1）    訂閱增量數據並開始緩存；<br>
@@ -9053,11 +9053,11 @@ API Key 權限：讀取<br>
 <h1 id='websocket-2'>Websocket資產及訂單</h1><h2 id='82fb364030-10'>簡介</h2><h3 id='url-2'>接入URL</h3>
 <p><strong>Websocket資產及訂單</strong></p>
 
-<p><strong><code>wss://api.huobi.com.hk/ws/v2</code></strong>  </p>
+<p><strong><code>wss://api.nhex.com.hk/ws/v2</code></strong>  </p>
 <h3 id='049ceff479-2'>數據壓縮</h3>
 <p>與行情WebSocket不同，資產和訂單返回的數據未進行 GZIP 壓縮。</p>
 <h3 id='1853724646-2'>心跳消息</h3>
-<p>當用戶的Websocket客戶端連接到火幣WebSocket服務器後，服務器會定期（當前設為20秒）向其發送<code>Ping</code>消息並包含一整數值如下：</p>
+<p>當用戶的Websocket客戶端連接到新火WebSocket服務器後，服務器會定期（當前設為20秒）向其發送<code>Ping</code>消息並包含一整數值如下：</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ping"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9198,7 +9198,7 @@ API Key 權限：讀取<br>
 
 <p>簽名前最後生成的字符串如下：</p>
 <pre class="highlight plaintext"><code>GET\n
-api.huobi.com.hk\n
+api.nhex.com.hk\n
 /ws/v2\n
 accessKey=0664b695-rfhfg2mkl3-abbf6c5d-49810&amp;signatureMethod=HmacSHA256&amp;signatureVersion=2.1&amp;timestamp=2019-12-05T11%3A53%3A03
 </code></pre>
