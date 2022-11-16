@@ -893,7 +893,6 @@ curl "https://api.nhex.com.hk/v1/common/timestamp"
 此接口返回歷史K線數據。K線周期以香港時間為基準開始計算，例如日K線的起始周期為香港時間0時至香港時間次日0時。
 
 <aside class="notice">當前 REST API 不支持自定義時間區間，如需要歷史固定時間範圍的數據，請參考 Websocket API 中的 K 線接口。</aside>
-<aside class="notice">獲取 hb10 凈值時， symbol 請填寫 「hb10」。</aside>
 
 ```shell
 curl "https://api.nhex.com.hk/market/history/kline?period=1day&size=200&symbol=btcusdt"
