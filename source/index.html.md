@@ -3580,7 +3580,6 @@ This topic sends a new candlestick whenever it is available.
 | high   | float     | High price during the interval                               |
 | vol    | float     | Aggregated trading value during the interval (in quote currency) |
 
-<aside class="notice">When symbol is set to "hb10" or "huobi10", amount, count, and vol will always have the value of 0</aside>
 ### Pull Request
 
 Pull request is supported with extra parameters to define the range. The maximum number of ticks in each response is 300.
